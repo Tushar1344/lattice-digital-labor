@@ -407,10 +407,10 @@
 
   <main>
 
-<header class="hero">
+<header class="hero" id="top">
   <div class="eyebrow">Field note · Digital labor</div>
   <h1>Lattice: the control plane for digital labor</h1>
-  <p class="lede">Lattice starts from five bets about the agent era.</p>
+  <p class="lede"><strong>Onboarding digital labor is the hardest challenge the enterprise faces in the agent era.</strong> Without a way to do it, every company is forced into a lose-lose choice: <strong>unleash</strong> agents and absorb the damage — brand harm, AI slop, work no one can trust — or <strong>hold them back</strong> and forfeit the productivity. Onboarding done right is the only way to get the upside without the blast radius.</p>
   <div class="meta-strip">
     <span><strong>Read</strong> ~12 min</span>
     <span><strong>Topic</strong> Agent governance</span>
@@ -419,7 +419,15 @@
 </header>
 
 <div class="lead-in">
-  <ol class="bets" id="the-bets">
+  <p>Why is it so hard? Because a prompt configures a model — it does not onboard a worker. When a human joins a team, they inherit far more than instructions: a role, the context behind it, a mental map of the business, permissions, tools, the policies that bound their judgment, a manager who reviews their work, and an accountable place in the org chart. Agents arrive with none of this. We hand them a prompt and an API key, then act surprised when they behave like contractors who started an hour ago and already have the keys to production. <strong>Digital labor cannot be onboarded with prompts alone.</strong></p>
+  <p><strong>Lattice is the enterprise control plane for digital labor.</strong> It gives agents business context, models the business through an ontology, governs what agents can see and do, scores their performance, and graduates them into higher-trust work over time.</p>
+  <p>This note explains the layer Lattice owns, the primitives it uses, and how an agent moves from <em>observing</em> to <em>acting autonomously</em> without the enterprise losing the thread of who is accountable.</p>
+</div>
+
+<section>
+  <h2 id="the-bets">The bets</h2>
+  <p>Underneath all of it, Lattice starts from five bets about the agent era.</p>
+  <ol class="bets">
     <li><strong>Models will keep getting more capable.</strong> They will read more, reason better, use more tools, and take on more categories of knowledge work.</li>
     <li><strong>The bottleneck moves from intelligence to authority.</strong> The hard question stops being "can the model do this?" and becomes "<em>should</em> this agent be allowed to do this — on this object, in this state, for this customer, under these conditions?"</li>
     <li><strong>Humans keep owning accountability.</strong> No enterprise will accept "the agent did it" as an operating model. Every agent action needs a human owner, a review path, and a business function that stands behind the outcome.</li>
@@ -427,10 +435,7 @@
     <li><strong>Intelligence without context is risky or unproductive.</strong> A capable model with no business context produces answers that are technically correct and operationally wrong — optimizing the local task while missing the account history, legal risk, escalation path, exception policy, or human owner that changes what should happen.</li>
   </ol>
   <p>If those bets are right, the enterprise problem is not deploying agents. It is <strong>onboarding digital labor</strong>.</p>
-  <p>Lattice is the onboarding and control layer for digital labor. It gives agents the context humans normally absorb, models the business through an ontology, governs what agents can see and do, scores their performance, and graduates them into higher-trust work over time. A prompt configures a model; it does not onboard a worker.</p>
-  <p>When a human joins a team, they inherit far more than instructions: a role, the context behind it, a mental map of the business, permissions, tools, policies, a manager, and an accountable place in the org chart. Agents arrive with none of this unless the enterprise makes it explicit.</p>
-  <p>This note explains the layer Lattice owns, the primitives it uses, and how an agent moves from <em>observing</em> to <em>acting autonomously</em> without the enterprise losing track of authority or accountability.</p>
-</div>
+</section>
 
 <section>
   <h2 id="the-core-problem">The core problem: capability is arriving before onboarding</h2>
@@ -720,7 +725,7 @@
 </section>
 
 <div class="post-footer">
-  <a class="post-nav-card" href="#the-bets">
+  <a class="post-nav-card" href="#top">
     <div class="nav-label">↑ Top</div>
     <div class="nav-title">Back to the start</div>
   </a>
@@ -762,7 +767,7 @@
       <div><span class="k">Updated</span><br>Jun 30, 2026</div>
       <div><span class="k">Read</span><br>~12 min</div>
     </div>
-    <a class="rail-back" href="#the-bets">↑ Back to top</a>
+    <a class="rail-back" href="#top">↑ Back to top</a>
   </aside>
 </div>
 
