@@ -89,12 +89,30 @@
   .lead-in { margin: 0 0 8px; }
   .lead-in p { font-size: 16.5px; color: var(--ink-soft); }
 
+  /* Part dividers (Understand / Govern / Earn trust) */
+  .part {
+    margin: 76px 0 8px; padding-top: 26px;
+    border-top: 2px solid var(--ink);
+  }
+  .part-num {
+    font-family: 'Chivo Mono', monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral);
+    display: block; margin-bottom: 8px;
+  }
+  .part-title {
+    font-family: 'Source Serif 4', Georgia, serif; font-weight: 400;
+    font-size: 38px; line-height: 1.08; letter-spacing: -0.025em;
+    margin: 0 0 10px; color: var(--ink); scroll-margin-top: 24px;
+  }
+  .part-gloss {
+    font-family: 'Source Serif 4', Georgia, serif; font-weight: 300;
+    font-size: 18px; line-height: 1.4; color: var(--muted);
+    margin: 0; max-width: 60ch;
+  }
+  .part + section { margin-top: 28px; }
+
   /* Sections */
   section { margin: 56px 0; }
-  .section-num {
-    font-family: 'Chivo Mono', monospace; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.1em; color: var(--coral); display: block; margin-bottom: 6px;
-  }
   h2 {
     font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; font-weight: 400;
     line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 16px; color: var(--ink);
@@ -285,6 +303,12 @@
     color: var(--muted-2); margin: 0 0 14px;
   }
   .toc { display: flex; flex-direction: column; margin-bottom: 36px; }
+  .toc .toc-grp {
+    font-family: 'Chivo Mono', monospace; font-size: 9.5px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted-2);
+    margin: 16px 0 5px; padding-left: 12px;
+  }
+  .toc .toc-grp:first-child { margin-top: 0; }
   .toc a {
     display: block; padding: 4px 0 4px 12px;
     font-size: 12.5px; color: var(--muted);
@@ -344,19 +368,35 @@
     <a class="brand" href="./">Atlas</a>
     <p class="brand-sub">control plane for digital labor</p>
 
-    <p class="nav-label">Contents</p>
+    <p class="nav-label">Setup</p>
     <nav class="nav">
       <a href="#what-changed">What changed</a>
       <a href="#the-problem">The problem</a>
       <a href="#the-primitive-model">The primitive model</a>
       <a href="#what-atlas-is">What Atlas is</a>
+    </nav>
+
+    <p class="nav-label">01 · Understand</p>
+    <nav class="nav">
       <a href="#why-context-matters">Context</a>
       <a href="#why-ontology-matters">Ontology</a>
+    </nav>
+
+    <p class="nav-label">02 · Govern</p>
+    <nav class="nav">
       <a href="#why-a-control-plane-matters">Control plane</a>
-      <a href="#agent-graduation">Graduation</a>
+    </nav>
+
+    <p class="nav-label">03 · Earn trust</p>
+    <nav class="nav">
+      <a href="#agent-graduation">Graduation ladder</a>
       <a href="#the-agent-scorecard">Scorecard</a>
       <a href="#graduation-gates">Graduation gates</a>
       <a href="#regression-and-demotion">Regression</a>
+    </nav>
+
+    <p class="nav-label">In practice</p>
+    <nav class="nav">
       <a href="#concrete-example">Worked example</a>
       <a href="#one-slide-summary">Summary</a>
     </nav>
@@ -382,7 +422,6 @@
 </div>
 
 <section>
-  <span class="section-num">01</span>
   <h2 id="what-changed">What changed</h2>
   <p>For decades, the unit of work was a human running a workflow. The software was passive; the person carried everything it could not encode.</p>
   <p>A human did four things no system wrote down:</p>
@@ -397,7 +436,6 @@
 </section>
 
 <section>
-  <span class="section-num">02</span>
   <h2 id="the-problem">The problem: enterprises are not agent-ready</h2>
   <p>The blocker is not model capability. It is that the business an agent must understand is not written down in any one place.</p>
   <p>Business context is scattered across:</p>
@@ -416,7 +454,6 @@
 </section>
 
 <section>
-  <span class="section-num">03</span>
   <h2 id="the-primitive-model">The primitive model</h2>
   <p>Atlas onboards digital labor through a chain of primitives. Skip a link and the agent runs with a blind spot.</p>
   <div class="chain">
@@ -438,11 +475,21 @@
       <tr><td><strong>Accountability</strong></td><td>Who answers for the outcome?</td></tr>
     </tbody>
   </table>
-  <p>Three primitives carry most of the weight — context, ontology, and the control plane — and three processes keep the agent honest over time: evaluation, graduation, and accountability.</p>
+  <p>These nine collapse into <strong>three jobs</strong>, and the rest of this note is organized around them, in order:</p>
+  <table class="tight">
+    <thead>
+      <tr><th>Job</th><th>Primitives</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Understand</strong></td><td>Role · Context · Ontology</td><td>give the agent meaning</td></tr>
+      <tr><td><strong>Govern</strong></td><td>Permissions · Tools · Policy (the control plane)</td><td>bound what it can do</td></tr>
+      <tr><td><strong>Earn trust</strong></td><td>Evaluation · Graduation · Accountability</td><td>prove it over time</td></tr>
+    </tbody>
+  </table>
+  <p>Understand and Govern make an agent <em>capable and safe on day one</em>; Earn trust is what lets its authority grow past day one. The three are the through-line from here.</p>
 </section>
 
 <section>
-  <span class="section-num">04</span>
   <h2 id="what-atlas-is">What Atlas is</h2>
   <p>Atlas is the onboarding and control layer for digital labor. It is easiest to define by what it is <em>not</em>:</p>
   <table>
@@ -460,8 +507,13 @@
   <p>Atlas does not replace these systems; it sits above them and gives them a shared frame. It reads identity from IAM, executes through the agent frameworks and workflow engines already in place, and consumes the traces observability emits. What it adds is the binding none of them own: an agent to a role, a role to context and ontology, an ontology to policy, and policy to an accountable human — plus the evaluation loop that tightens or loosens that binding over time. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Atlas answers <em>what should happen next, and who stands behind it.</em></p>
 </section>
 
+<div class="part">
+  <span class="part-num">Part 01</span>
+  <div class="part-title" id="part-understand">Understand</div>
+  <p class="part-gloss">Give the agent meaning — what matters, and what the things it touches actually mean.</p>
+</div>
+
 <section>
-  <span class="section-num">05</span>
   <h2 id="why-context-matters">Why context matters</h2>
   <p class="thesis">Context tells agents what matters.</p>
   <p>Raw data access is not context. An agent can query every table and still not know what it is looking at — context is what turns rows into situations.</p>
@@ -480,7 +532,6 @@
 </section>
 
 <section>
-  <span class="section-num">06</span>
   <h2 id="why-ontology-matters">Why ontology matters</h2>
   <p class="thesis">Ontology tells agents what things mean.</p>
   <p>If context is the situation, ontology is the map: a model of the business — customers, accounts, contracts, tickets, opportunities, workflows, approvals, policies, decisions, agents, humans, and outputs — and how they connect.</p>
@@ -495,8 +546,13 @@
   <p>The ontology is also what makes the rest of Atlas enforceable: permissions, policies, and the graduation ladder all attach to ontology objects and states. "Issue a credit over $X requires approval" is only meaningful if the system knows what a <em>credit</em> is, which <em>account</em> it touches, and what <em>state</em> that account is in. Without a shared model, every policy collapses into a brittle string match against raw data. With one, policy becomes a statement about the business — <em>agents may not send renewal notices on contracts in dispute</em> — that holds no matter which system the underlying data lives in. The ontology is the vocabulary; every policy is a sentence written in it.</p>
 </section>
 
+<div class="part">
+  <span class="part-num">Part 02</span>
+  <div class="part-title" id="part-govern">Govern</div>
+  <p class="part-gloss">Bound what the agent can do — and enforce it by construction, not good intentions.</p>
+</div>
+
 <section>
-  <span class="section-num">07</span>
   <h2 id="why-a-control-plane-matters">Why a control plane matters</h2>
   <p class="thesis">The control plane tells agents what they can do.</p>
   <p>Context and ontology give the agent understanding. The control plane gives the enterprise control. It governs:</p>
@@ -513,8 +569,13 @@
   <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through Atlas, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Policy is enforced by construction, not by good intentions.</p>
 </section>
 
+<div class="part">
+  <span class="part-num">Part 03</span>
+  <div class="part-title" id="part-earn-trust">Earn trust</div>
+  <p class="part-gloss">Prove it over time — measure on business trust, graduate against thresholds, and stay reversible.</p>
+</div>
+
 <section>
-  <span class="section-num">08</span>
   <h2 id="agent-graduation">Agent graduation</h2>
   <p class="thesis">Agents earn trust over time.</p>
   <p>No one gives a new hire signing authority on day one; they watch, then suggest, then act under supervision, then act on their own. Agents should earn authority the same way. Atlas defines a graduation ladder, and an agent occupies exactly one rung per role.</p>
@@ -535,7 +596,6 @@
 </section>
 
 <section>
-  <span class="section-num">09</span>
   <h2 id="the-agent-scorecard">The agent scorecard</h2>
   <p>You cannot graduate what you do not measure — and model accuracy is the wrong measure. An agent can be 95% accurate and still be untrustworthy if its 5% of errors all land on high-risk actions, or if it never escalates when it should. Atlas scores agents on <strong>business trust</strong>, across dimensions a model benchmark ignores:</p>
   <table>
@@ -558,7 +618,6 @@
 </section>
 
 <section>
-  <span class="section-num">10</span>
   <h2 id="graduation-gates">Graduation gates</h2>
   <p class="thesis">Graduation tells the enterprise when agents are ready for higher-stakes work.</p>
   <p>An agent moves up a level only when it clears explicit thresholds — conditions checked against the scorecard, not a judgment call:</p>
@@ -574,7 +633,6 @@
 </section>
 
 <section>
-  <span class="section-num">11</span>
   <h2 id="regression-and-demotion">Regression and demotion</h2>
   <p>Graduation runs both ways. Trust that can only increase is not trust; it is drift. If an agent's behavior degrades — a drop in scorecard performance, a policy violation, a spike in override rate, a rise in surrounding risk — Atlas can pull it back. The responses escalate with the severity:</p>
   <ul>
@@ -587,8 +645,13 @@
   <p>Demotion is not a failure of the system; it is the system working. The machinery that earns trust is the machinery that revokes it.</p>
 </section>
 
+<div class="part">
+  <span class="part-num">In practice</span>
+  <div class="part-title" id="part-in-practice">The three together</div>
+  <p class="part-gloss">Understand, Govern, and Earn trust are not stages you finish — they run at once, on every action.</p>
+</div>
+
 <section>
-  <span class="section-num">12</span>
   <h2 id="concrete-example">Concrete example: a support triage agent</h2>
   <p>A support triage agent reads inbound tickets, gathers context, and resolves or routes them. Here is what Atlas wraps around it.</p>
   <h3>Context it receives</h3>
@@ -633,22 +696,21 @@
 </section>
 
 <section>
-  <span class="section-num">13</span>
   <h2 id="one-slide-summary">One-slide summary</h2>
   <blockquote>
     <p><strong>Digital labor needs onboarding.</strong></p>
-    <p>Onboarding requires <strong>context</strong> (what matters), <strong>ontology</strong> (what things mean), <strong>control</strong> (what agents can do), <strong>evaluation</strong> (how they're doing), <strong>graduation</strong> (when they're ready for more), and <strong>accountability</strong> (who answers for the outcome).</p>
-    <p><strong>Atlas is the enterprise control plane for digital labor</strong> — the operating layer that provides all six.</p>
+    <p>Onboarding is three jobs: <strong>Understand</strong> (context + ontology — what matters, what things mean), <strong>Govern</strong> (the control plane — what agents can do), and <strong>Earn trust</strong> (evaluation, graduation, accountability — how they're doing, when they're ready for more, who owns the outcome).</p>
+    <p><strong>Atlas is the enterprise control plane for digital labor</strong> — the operating layer that provides all three.</p>
   </blockquote>
   <table class="tight">
     <thead>
-      <tr><th>Layer</th><th>What it provides</th></tr>
+      <tr><th>Job</th><th>Layer</th><th>What it provides</th></tr>
     </thead>
     <tbody>
-      <tr><td>Context</td><td>What matters</td></tr>
+      <tr><td rowspan="2"><strong>Understand</strong></td><td>Context</td><td>What matters</td></tr>
       <tr><td>Ontology</td><td>What things mean</td></tr>
-      <tr><td>Control plane</td><td>What agents can do</td></tr>
-      <tr><td>Scorecard</td><td>How well they're doing</td></tr>
+      <tr><td><strong>Govern</strong></td><td>Control plane</td><td>What agents can do</td></tr>
+      <tr><td rowspan="3"><strong>Earn trust</strong></td><td>Scorecard</td><td>How well they're doing</td></tr>
       <tr><td>Graduation</td><td>When they're ready for more</td></tr>
       <tr><td>Accountability</td><td>Who owns the outcome</td></tr>
     </tbody>
@@ -673,19 +735,24 @@
     <div class="toc-block">
       <p class="rail-label">On this page</p>
       <nav class="toc">
+        <span class="toc-grp">Setup</span>
         <a href="#what-changed">What changed</a>
         <a href="#the-problem">The problem</a>
         <a href="#the-primitive-model">The primitive model</a>
         <a href="#what-atlas-is">What Atlas is</a>
-        <a href="#why-context-matters">Why context matters</a>
-        <a href="#why-ontology-matters">Why ontology matters</a>
-        <a href="#why-a-control-plane-matters">Why a control plane matters</a>
-        <a href="#agent-graduation">Agent graduation</a>
-        <a href="#the-agent-scorecard">The agent scorecard</a>
+        <span class="toc-grp">01 · Understand</span>
+        <a href="#why-context-matters">Context</a>
+        <a href="#why-ontology-matters">Ontology</a>
+        <span class="toc-grp">02 · Govern</span>
+        <a href="#why-a-control-plane-matters">Control plane</a>
+        <span class="toc-grp">03 · Earn trust</span>
+        <a href="#agent-graduation">Graduation ladder</a>
+        <a href="#the-agent-scorecard">Scorecard</a>
         <a href="#graduation-gates">Graduation gates</a>
-        <a href="#regression-and-demotion">Regression and demotion</a>
-        <a href="#concrete-example">Concrete example</a>
-        <a href="#one-slide-summary">One-slide summary</a>
+        <a href="#regression-and-demotion">Regression</a>
+        <span class="toc-grp">In practice</span>
+        <a href="#concrete-example">Worked example</a>
+        <a href="#one-slide-summary">Summary</a>
       </nav>
     </div>
     <div class="rail-meta">
