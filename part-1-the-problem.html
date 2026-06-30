@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onboarding Digital Labor: a three-part series</title>
+<title>Onboarding Digital Labor, Part 1: The problem</title>
 <meta name="description" content="Why enterprise agents need context, ontology, a control plane, scorecards, and a graduation process before they can safely take on higher-stakes work.">
 
 <link rel="icon" href="assets/brand/favicon.ico" sizes="any">
@@ -19,12 +19,12 @@
 <!-- open graph / twitter -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Lattice">
-<meta property="og:title" content="Onboarding Digital Labor: a three-part series">
+<meta property="og:title" content="Onboarding Digital Labor, Part 1: The problem">
 <meta property="og:description" content="Onboarding digital labor is the hardest, highest-stakes challenge of the agent era. Lattice is the control plane that makes it safe to scale.">
 <meta property="og:image" content="https://tushar1344.github.io/lattice-digital-labor/assets/brand/og-image.png">
 <meta property="og:url" content="https://tushar1344.github.io/lattice-digital-labor/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Onboarding Digital Labor: a three-part series">
+<meta name="twitter:title" content="Onboarding Digital Labor, Part 1: The problem">
 <meta name="twitter:description" content="Onboarding digital labor is the hardest, highest-stakes challenge of the agent era. Lattice is the control plane that makes it safe to scale.">
 <meta name="twitter:image" content="https://tushar1344.github.io/lattice-digital-labor/assets/brand/og-image.png">
 
@@ -402,15 +402,6 @@
     table { font-size: 13px; }
     th, td { padding: 8px 10px; }
   }
-
-  /* series hub cards */
-  .series-grid { display: grid; gap: 16px; margin: 28px 0; }
-  .series-card { display: block; border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; background: var(--panel); text-decoration: none; transition: border-color .15s ease; }
-  .series-card:hover { border-color: var(--coral); }
-  .series-card .sc-num { font-family: 'Chivo Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); }
-  .series-card h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 22px; margin: 6px 0 8px; color: var(--ink); }
-  .series-card p { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
-  @media (min-width: 720px) { .series-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
 </head>
 <body>
@@ -419,29 +410,138 @@
   <aside class="sidebar">
     <a class="brand" href="./">Lattice</a>
     <p class="brand-sub">control plane for digital labor</p>
+
     <p class="nav-label">The series</p>
     <nav class="nav">
-      <a href="part-1-the-problem.html">1 · The problem</a>
+      <a href="part-1-the-problem.html" class="active">1 · The problem</a>
       <a href="part-2-the-framework.html">2 · The framework</a>
       <a href="part-3-in-practice.html">3 · In practice</a>
     </nav>
+
+    <p class="nav-label">On this page</p>
+    <nav class="nav">
+      <a href="#the-core-problem">Capability is arriving before onboarding</a>
+      <a href="#existing-systems">Filling the gaps your tools leave</a>
+      <a href="#the-primitive-model">The primitive model</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="./">← Series home</a>
+    </div>
   </aside>
 
   <main>
 
+
 <header class="hero" id="top">
-  <div class="eyebrow">A three-part series</div>
-  <h1>Onboarding Digital Labor</h1>
-  <p class="lede">Capable agents are arriving faster than the structure to run them. This series is about that structure: why onboarding, not capability, is the bottleneck; the framework for doing it (Ground, Govern, Graduate); and what it looks like in practice and at scale.</p>
+  <div class="eyebrow">Part 1 of 3 · Onboarding Digital Labor</div>
+  <h1>The problem: capability is arriving before onboarding</h1>
+  <p class="lede">Onboarding digital labor is the hardest challenge the enterprise faces in the agent era. It leaves every company with three options. Move fast and break things: unleash agents and absorb the damage. Brand harm, AI slop, work no one can trust. Or move slow but safe: hold them back and forfeit the productivity. Most companies are stuck on these two. The fix is the third: onboard each agent like a worker, with the context to do the job, limits on what it can touch, and a named owner for the outcome.</p>
+  <div class="meta-strip">
+    <span><strong>Read</strong> ~20 min</span>
+    <span><strong>Topic</strong> Agent governance</span>
+    <span><strong>Updated</strong> Jun 30, 2026</span>
+  </div>
 </header>
 
-<div class="series-grid">
-  <a class="series-card" href="part-1-the-problem.html"><span class="sc-num">Part 1</span><h3>The problem</h3><p>Capability is no longer the bottleneck. Context, control, and accountability are. Why the obvious tools fall short.</p></a>
-  <a class="series-card" href="part-2-the-framework.html"><span class="sc-num">Part 2</span><h3>The framework</h3><p>Ground, Govern, Graduate: give an agent meaning, bound what it can do, and let it earn trust over time.</p></a>
-  <a class="series-card" href="part-3-in-practice.html"><span class="sc-num">Part 3</span><h3>In practice</h3><p>The framework on one ticket, where to start tomorrow, and what changes as agents become a fleet.</p></a>
+
+
+<div class="lead-in">
+  <p>Model capabilities keep climbing. The productivity enterprises actually get from agents has not kept pace. Why?</p>
+  <p>Because capability is no longer the bottleneck it used to be. Capable models are becoming common. What is scarce is the structure around them: the context to understand the business, the controls on what an agent is allowed to do, and the accountability for the result. That structure is the hard part, and it has to be built.</p>
+  <p>A prompt configures a model, and for most agents that is where onboarding stops. But onboarding a worker is everything around the model. When a human joins a team, they inherit a role, the context behind it, permissions, the policies that bound their judgment, a manager who reviews their work, and an accountable place in the org chart. An agent arrives with none of that. We hand it a prompt and an API key, then act surprised when it behaves like a contractor who started an hour ago and already has the keys to production.</p>
 </div>
 
-<p>Prefer one sitting? The <a href="gaps.html">single-page version</a> covers the whole argument.</p>
+<section>
+  <h2 id="the-core-problem">Capability is arriving before onboarding</h2>
+  <p>The enterprise agent stack is improving from the bottom up. Models are getting better.</p>
+  <p>But the onboarding layer is missing.</p>
+  <p>And it is missing right when it is needed most. Models have just crossed the line from <em>answering</em> to <em>acting</em>. A system that only answers can be wrong harmlessly: a human reads the output and decides what to do with it. An agent that acts is wrong <em>in production</em>. That moves the hard part from intelligence to authority, and it is happening now, not someday.</p>
+  <p>That is the layer Lattice occupies. It is the control plane for digital labor: it gives agents business context, models the business through an ontology, governs what they can see and do, scores their performance, and graduates them into higher-trust work over time.</p>
+</section>
+
+<section>
+  <h2 id="existing-systems">Filling the gaps your tools leave</h2>
+  <p>IAM, workflow engines, observability, vector databases, agent frameworks: each solves part of the problem. Lattice is easiest to place by what it is <em>not</em>:</p>
+  <table>
+    <thead>
+      <tr><th>Lattice is not…</th><th>Because that only gives you…</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>an agent registry</td><td>a list of agents, not their authority or fitness</td></tr>
+      <tr><td>IAM</td><td>row-level access, not action-level judgment</td></tr>
+      <tr><td>workflow automation</td><td>execution, not meaning or accountability</td></tr>
+      <tr><td>observability</td><td>a record of what happened, not control over what happens next</td></tr>
+      <tr><td>a harness or meta-harness</td><td>a place to run agents, not the meaning, authority, or trust around them</td></tr>
+    </tbody>
+  </table>
+  <p>Take IAM. It answers <em>can this identity read this row?</em> It never answers the question agents raise: <em>should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em> Access control is binary and static; agent authority has to be conditional and dynamic: allowed <em>here</em>, in <em>this</em> state, up to <em>this</em> threshold, and only while the agent's track record holds. None of that fits in an access-control list.</p>
+  <p>Or take the harness. A meta-harness that runs Claude Code, Codex, or your own agents behind one interface gives you a lot: a uniform runner, a sandbox, cost caps, network limits. But those controls are about the session and the machine, not the business. The sandbox can stop an agent from reaching a secret. It cannot tell you that a refund on this account needs the owner's sign-off, or that this agent has earned the right to issue it. The harness runs the agent. It does not know what the work means or who answers for it.</p>
+  <p>Each of these systems is necessary. None is sufficient. Lattice connects them around the three things they individually ignore: what the business <em>means</em>, what an agent is <em>allowed</em> to do in a given situation, and who is <em>accountable</em> for the result. It does not replace them; it sits above them and gives them a shared frame. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Lattice answers <em>what should happen next, and who stands behind it.</em></p>
+  <p>Concretely, that draws a clean line between what Lattice owns and what it composes with:</p>
+  <table class="tight">
+    <thead>
+      <tr><th>Lattice owns</th><th>Lattice composes with (does not own)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>the agent's <strong>meaning</strong>: context and ontology</td><td>the model, the agent framework, the harness</td></tr>
+      <tr><td>its <strong>authority</strong>: roles, policy, what needs approval</td><td>IAM / identity, the policy engine that enforces</td></tr>
+      <tr><td>its <strong>trust trajectory</strong>: scorecard, graduation, demotion</td><td>eval and observability tools that emit the signals</td></tr>
+      <tr><td>the <strong>accountable owner</strong> behind each action</td><td>the runtime, durable execution, vector and memory stores</td></tr>
+    </tbody>
+  </table>
+  <p>The rule: Lattice owns the decisions, and composes with everything that stores, retrieves, or executes. You should be able to swap the model, the agent framework, or the database under it without touching Lattice.</p>
+  <p class="pull">Granting an agent database access is not onboarding. It's giving a new hire a master keycard and no manager.</p>
+</section>
+
+<section>
+  <h2 id="the-primitive-model">The primitive model</h2>
+  <p>Lattice onboards digital labor through a chain of primitives. Skip a link and the agent runs with a blind spot.</p>
+  <div class="chain">
+    <b>Role</b> <span class="arr">→</span> <b>Context</b> <span class="arr">→</span> <b>Ontology</b> <span class="arr">→</span> <b>Permissions</b> <span class="arr">→</span> <b>Tools</b> <span class="arr">→</span> <b>Policy</b> <span class="arr">→</span> <b>Evaluation</b> <span class="arr">→</span> <b>Graduation</b> <span class="arr">→</span> <b>Accountability</b>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Primitive</th><th>The question it answers</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Role</strong></td><td>What job is this agent here to do?</td></tr>
+      <tr><td><strong>Context</strong></td><td>What does it need to know to do that job?</td></tr>
+      <tr><td><strong>Ontology</strong></td><td>What do the things it works with <em>mean</em>?</td></tr>
+      <tr><td><strong>Permissions</strong></td><td>What is it allowed to see?</td></tr>
+      <tr><td><strong>Tools</strong></td><td>What is it allowed to use?</td></tr>
+      <tr><td><strong>Policy</strong></td><td>What requires approval, and what is forbidden?</td></tr>
+      <tr><td><strong>Evaluation</strong></td><td>How well is it actually doing?</td></tr>
+      <tr><td><strong>Graduation</strong></td><td>Has it earned more trust?</td></tr>
+      <tr><td><strong>Accountability</strong></td><td>Who answers for the outcome?</td></tr>
+    </tbody>
+  </table>
+  <p>These nine collapse into <strong>three jobs</strong>, and the rest of this note is organized around them, in order:</p>
+  <table class="tight">
+    <thead>
+      <tr><th>Job</th><th>Primitives</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Ground</strong></td><td>Role · Context · Ontology</td><td>give the agent meaning</td></tr>
+      <tr><td><strong>Govern</strong></td><td>Permissions · Tools · Policy (the control plane)</td><td>bound what it can do</td></tr>
+      <tr><td><strong>Graduate</strong></td><td>Evaluation · Graduation · Accountability</td><td>measure it, then grant or pull back authority</td></tr>
+    </tbody>
+  </table>
+  <p>Ground and Govern make an agent useful and safe on day one. Graduate is what lets its authority grow after that. Part 2 builds the framework, one job at a time.</p>
+</section>
+
+
+
+<div class="post-footer">
+  <a class="post-nav-card" href="./">
+    <div class="nav-label">← Back</div>
+    <div class="nav-title">Series home</div>
+  </a>
+  <a class="post-nav-card next" href="part-2-the-framework.html">
+    <div class="nav-label">Next →</div>
+    <div class="nav-title">Part 2: The framework</div>
+  </a>
+</div>
 
   </main>
 </div>

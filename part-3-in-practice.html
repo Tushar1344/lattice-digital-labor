@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onboarding Digital Labor: a three-part series</title>
+<title>Onboarding Digital Labor, Part 3: In practice</title>
 <meta name="description" content="Why enterprise agents need context, ontology, a control plane, scorecards, and a graduation process before they can safely take on higher-stakes work.">
 
 <link rel="icon" href="assets/brand/favicon.ico" sizes="any">
@@ -19,12 +19,12 @@
 <!-- open graph / twitter -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Lattice">
-<meta property="og:title" content="Onboarding Digital Labor: a three-part series">
+<meta property="og:title" content="Onboarding Digital Labor, Part 3: In practice">
 <meta property="og:description" content="Onboarding digital labor is the hardest, highest-stakes challenge of the agent era. Lattice is the control plane that makes it safe to scale.">
 <meta property="og:image" content="https://tushar1344.github.io/lattice-digital-labor/assets/brand/og-image.png">
 <meta property="og:url" content="https://tushar1344.github.io/lattice-digital-labor/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Onboarding Digital Labor: a three-part series">
+<meta name="twitter:title" content="Onboarding Digital Labor, Part 3: In practice">
 <meta name="twitter:description" content="Onboarding digital labor is the hardest, highest-stakes challenge of the agent era. Lattice is the control plane that makes it safe to scale.">
 <meta name="twitter:image" content="https://tushar1344.github.io/lattice-digital-labor/assets/brand/og-image.png">
 
@@ -402,15 +402,6 @@
     table { font-size: 13px; }
     th, td { padding: 8px 10px; }
   }
-
-  /* series hub cards */
-  .series-grid { display: grid; gap: 16px; margin: 28px 0; }
-  .series-card { display: block; border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; background: var(--panel); text-decoration: none; transition: border-color .15s ease; }
-  .series-card:hover { border-color: var(--coral); }
-  .series-card .sc-num { font-family: 'Chivo Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); }
-  .series-card h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 22px; margin: 6px 0 8px; color: var(--ink); }
-  .series-card p { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
-  @media (min-width: 720px) { .series-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
 </head>
 <body>
@@ -419,29 +410,282 @@
   <aside class="sidebar">
     <a class="brand" href="./">Lattice</a>
     <p class="brand-sub">control plane for digital labor</p>
+
     <p class="nav-label">The series</p>
     <nav class="nav">
       <a href="part-1-the-problem.html">1 · The problem</a>
       <a href="part-2-the-framework.html">2 · The framework</a>
-      <a href="part-3-in-practice.html">3 · In practice</a>
+      <a href="part-3-in-practice.html" class="active">3 · In practice</a>
     </nav>
+
+    <p class="nav-label">On this page</p>
+    <nav class="nav">
+      <a href="#concrete-example">A support triage agent</a>
+      <a href="#where-you-start">Where you start</a>
+      <a href="#fleets">Fleets: the ratio flips</a>
+      <a href="#authoring">Authoring spreads beyond IT</a>
+      <a href="#agent-to-agent">Agents working with agents</a>
+      <a href="#one-slide-summary">One-slide summary</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="./">← Series home</a>
+    </div>
   </aside>
 
   <main>
 
 <header class="hero" id="top">
-  <div class="eyebrow">A three-part series</div>
-  <h1>Onboarding Digital Labor</h1>
-  <p class="lede">Capable agents are arriving faster than the structure to run them. This series is about that structure: why onboarding, not capability, is the bottleneck; the framework for doing it (Ground, Govern, Graduate); and what it looks like in practice and at scale.</p>
+  <div class="eyebrow">Part 3 of 3 · Onboarding Digital Labor</div>
+  <h1>In practice, and what's coming</h1>
+  <p class="lede">The framework on a single ticket, where to start tomorrow, and what changes as agents go from a handful to a fleet.</p>
+  <div class="meta-strip"><span><strong>Read</strong> ~9 min</span><span><strong>Part</strong> 3 of 3</span></div>
 </header>
 
-<div class="series-grid">
-  <a class="series-card" href="part-1-the-problem.html"><span class="sc-num">Part 1</span><h3>The problem</h3><p>Capability is no longer the bottleneck. Context, control, and accountability are. Why the obvious tools fall short.</p></a>
-  <a class="series-card" href="part-2-the-framework.html"><span class="sc-num">Part 2</span><h3>The framework</h3><p>Ground, Govern, Graduate: give an agent meaning, bound what it can do, and let it earn trust over time.</p></a>
-  <a class="series-card" href="part-3-in-practice.html"><span class="sc-num">Part 3</span><h3>In practice</h3><p>The framework on one ticket, where to start tomorrow, and what changes as agents become a fleet.</p></a>
+<div class="part">
+  <span class="part-num">In practice</span>
+  <div class="part-title" id="part-in-practice">The three together</div>
+  <p class="part-gloss">Ground, Govern, and Graduate are not stages you finish; they run at once, on every action.</p>
 </div>
 
-<p>Prefer one sitting? The <a href="gaps.html">single-page version</a> covers the whole argument.</p>
+<section>
+  <h2 id="concrete-example">A support triage agent</h2>
+  <p>A support triage agent reads inbound tickets, gathers context, and resolves or routes them. Here is what Lattice wraps around it.</p>
+  <h3>Context it receives</h3>
+  <ul>
+    <li><strong>Customer context</strong>: who they are, tier, account health, recent history</li>
+    <li><strong>Contract / SLA context</strong>: entitlements and the response clock running on this ticket</li>
+    <li><strong>Ticket state</strong>: new, in progress, escalated, or awaiting customer</li>
+  </ul>
+  <h3>Ontology it operates in</h3>
+  <ul>
+    <li>A <em>ticket</em> belongs to an <em>account</em>, which holds a <em>contract</em>, which sets an <em>SLA</em>.</li>
+    <li>A ticket in <code>escalated</code> allows different actions than one that is <code>new</code>.</li>
+  </ul>
+  <h3>Actions and approvals</h3>
+  <table>
+    <thead>
+      <tr><th>Action</th><th>Authority at Level 4 (within guardrails)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Categorize and tag the ticket</td><td>Autonomous</td></tr>
+      <tr><td>Reply with a known-good answer</td><td>Autonomous</td></tr>
+      <tr><td>Route to a specialist queue</td><td>Autonomous</td></tr>
+      <tr><td>Issue a credit under $X</td><td>Autonomous</td></tr>
+      <tr><td>Issue a credit over $X</td><td>Requires human approval</td></tr>
+      <tr><td>Touch a top-tier account's Sev-1</td><td>Escalate to a human</td></tr>
+    </tbody>
+  </table>
+  <h3>Accountability</h3>
+  <p>Every action is logged with the context the agent saw and the reason it acted. The support lead is the named owner, so if the agent mishandles a case, there is a trail to review and a person who answers for it.</p>
+  <h3>A trace, end to end</h3>
+  <p>Put it in motion. Run the same ticket three ways and watch what changes:</p>
+  <div class="tsim" id="tsim">
+    <div class="tsim-head">
+      <span class="tsim-label">Interactive</span>
+      <span class="tsim-title">One ticket, three ways</span>
+    </div>
+    <div class="tsim-body">
+      <div class="tsim-ticket">
+        <div class="tsim-ticket-meta">Inbound · Northwind (top-tier) · Sev-1 · 1-hour SLA, 40 min left</div>
+        <div class="tsim-ticket-text">"Still seeing 500s after the maintenance window."</div>
+      </div>
+      <div class="tsim-modes">
+        <button class="tsim-mode" data-mode="none">No Lattice</button>
+        <button class="tsim-mode" data-mode="l1">Level 1 · Recommend</button>
+        <button class="tsim-mode is-active" data-mode="l4">Level 4 · Guardrails</button>
+      </div>
+      <ol class="tsim-steps" id="tsim-steps"></ol>
+      <div class="tsim-outcome" id="tsim-outcome"></div>
+      <div class="tsim-controls">
+        <button class="tsim-btn tsim-run" id="tsim-run">▶ Run</button>
+        <button class="tsim-btn" id="tsim-reset">Reset</button>
+      </div>
+    </div>
+  </div>
+  <noscript><p><em>This step-by-step demo needs JavaScript. At Level 4 the agent resolves context, classifies and replies autonomously, holds the over-threshold credit for sign-off, escalates the Sev-1, and logs every step.</em></p></noscript>
+  <script>
+  (function () {
+    var DATA = {
+      none: { steps: [
+        ['Resolve context','Reads raw DB rows. No tier, no SLA, no history.','',''],
+        ['Classify','Tags it an incident.','',''],
+        ['Propose credit','Decides a $2,000 credit is fair.','',''],
+        ['Policy gate','No gate exists.','',''],
+        ['Act','<b>Credit fires.</b> Top-tier account, no approval.','bad','Fires'],
+        ['Log','One Slack message. No command id, no trail.','bad','No trail']
+      ], outcome: ['bad','$2,000 issued to a top-tier account with no sign-off, the Sev-1 never escalated, and nothing you can reconstruct later.'] },
+      l1: { steps: [
+        ['Resolve context','Grounded: Northwind, top-tier, Sev-1, 40 min left.','ok','Auto'],
+        ['Classify','<b>Suggests</b> incident / availability, Sev-1.','human','Needs approval'],
+        ['Propose credit','<b>Drafts</b> a $2,000 goodwill credit.','human','Needs approval'],
+        ['Policy gate','Every action waits for a human.','human','Human'],
+        ['Escalate','Recommends paging on-call.','human','Needs approval'],
+        ['Log','Suggestions and approvals recorded.','ok','Logged']
+      ], outcome: ['warn','Safe, but a human touches every step. Useful as an assistant, not yet real leverage.'] },
+      l4: { steps: [
+        ['Resolve context','Grounded: Northwind, top-tier, Sev-1, 40 min left.','ok','Auto'],
+        ['Classify','incident / availability, Sev-1.','ok','Auto'],
+        ['Propose credit','Proposes a $2,000 goodwill credit.','ok','Auto'],
+        ['Policy gate','Over $X <b>and</b> top-tier: two policies fire. Held for the support lead.','hold','Held'],
+        ['Escalate','Top-tier Sev-1: pages on-call.','ok','Escalated'],
+        ['Log','One command id ties every step; reason and approver recorded.','ok','Logged']
+      ], outcome: ['ok','Routine actions autonomous, the risky credit held for sign-off, the Sev-1 escalated, all on one trail.'] }
+    };
+    var sim = document.getElementById('tsim');
+    if (!sim) return;
+    var stepsEl = sim.querySelector('#tsim-steps');
+    var outEl = sim.querySelector('#tsim-outcome');
+    var mode = 'l4', timers = [];
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
+    function build(){
+      clearTimers();
+      stepsEl.innerHTML = '';
+      DATA[mode].steps.forEach(function(s, i){
+        var li = document.createElement('li');
+        var pill = s[2] ? '<span class="tsim-pill ' + s[2] + '">' + s[3] + '</span>' : '';
+        li.innerHTML = '<span class="tnum">' + (i+1) + '</span><span class="tbody"><b>' + s[0] + '.</b> ' + s[1] + '</span>' + pill;
+        stepsEl.appendChild(li);
+      });
+      outEl.className = 'tsim-outcome';
+      outEl.textContent = '';
+    }
+    function showOutcome(){ var o = DATA[mode].outcome; outEl.textContent = o[1]; outEl.className = 'tsim-outcome show ' + o[0]; }
+    function run(){
+      build();
+      var rows = stepsEl.querySelectorAll('li');
+      if (reduce){ rows.forEach(function(r){ r.classList.add('show'); }); showOutcome(); return; }
+      rows.forEach(function(r, i){ timers.push(setTimeout(function(){ r.classList.add('show'); }, 320 * (i + 1))); });
+      timers.push(setTimeout(showOutcome, 320 * (rows.length + 1)));
+    }
+    sim.querySelectorAll('.tsim-mode').forEach(function(b){
+      b.addEventListener('click', function(){
+        sim.querySelectorAll('.tsim-mode').forEach(function(x){ x.classList.remove('is-active'); });
+        b.classList.add('is-active');
+        mode = b.getAttribute('data-mode');
+        run();
+      });
+    });
+    sim.querySelector('#tsim-run').addEventListener('click', run);
+    sim.querySelector('#tsim-reset').addEventListener('click', build);
+    // initial: show the Level 4 path fully (no animation) so the section reads even unran
+    build();
+    stepsEl.querySelectorAll('li').forEach(function(r){ r.classList.add('show'); });
+    showOutcome();
+  })();
+  </script>
+  <p>Nothing here required the agent to be told "ask before issuing large credits to big accounts." The agent reasoned; Lattice decided what that reasoning was allowed to do.</p>
+  <p>At Level 1, this same agent only <em>suggests</em> the category and the reply for a human to approve. Onboarding is not a one-time switch from "off" to "on." It is a dial Lattice turns in either direction as the evidence accumulates.</p>
+  <div class="callout">
+    <div class="callout-label">Before / after</div>
+    <p><strong>Before Lattice:</strong> the agent has a database login and a model. It answers fast, occasionally refunds a strategic account it shouldn't, and no one can reconstruct why.</p>
+    <p><strong>After Lattice:</strong> the same agent, grounded in account and SLA context, gated on the two risky actions, scored, and owned. It clears the routine cases and escalates the rest, with every step on the record.</p>
+  </div>
+</section>
+
+<section>
+  <h2 id="where-you-start">Where you start</h2>
+  <p>You don't deploy all of Lattice at once. The minimal useful version is <strong>one role, one bounded job</strong>, with just enough of each pillar to be safe:</p>
+  <ul>
+    <li><strong>Ground</strong>: a context pack for that one role, including whatever dark context you can capture today. Not an ontology of the whole company.</li>
+    <li><strong>Govern</strong>: a short policy that gates its two or three risky actions. Not every action it could take.</li>
+    <li><strong>Graduate</strong>: one scorecard and one named owner, starting the agent at Level 1 (Recommend) or Level 2 (Draft).</li>
+  </ul>
+  <p>Pick a job that is high-volume and observable (ticket triage, not refunds), run the agent where a human still approves, and let it earn its way up on evidence. No platform migration, no full ontology, no autonomy on day one. The first version is a single onboarded worker; the platform is what you get once you've onboarded a hundred.</p>
+  <h3>A starter prompt you can run today</h3>
+  <p>You can stand up the Level 1 version in a single prompt. Paste this into Claude, then paste a ticket and its context:</p>
+  <pre><code>You are a support triage agent running at Level 1: you recommend, you do not act.
+
+Context you get with each ticket:
+- Account: name, tier (standard or strategic), health
+- Contract: plan, SLA (e.g. Sev-1 = 1 hour), time remaining
+- Ticket: text and current state (new / in progress / escalated)
+
+For each ticket, return:
+1. Classification: category and severity, with one line of reasoning.
+2. Draft reply: what you would send the customer. Do not send it.
+3. Proposed action: e.g. "issue a $200 credit", "route to billing", "no action".
+4. Gate check: flag anything that needs a human first, using these rules:
+   - Any credit or refund over $500 -> needs approval.
+   - Any money or status change on a STRATEGIC account -> needs approval.
+   - A Sev-1 on a strategic account -> escalate to on-call now.
+   - Missing tier or SLA -> ask for it, do not guess.
+5. Owner: name the person or team who signs off.
+
+Rules:
+- Never invent account details. If context is missing, say so.
+- You only recommend. A human approves every external action.
+- Keep reasoning to a line or two, not an essay.
+
+Reply "Ready. Paste a ticket and its context." and wait.</code></pre>
+  <p>That is Level 1: useful immediately, and safe because it only recommends. Notice what the prompt is doing by hand: supplying context, gating risky actions, naming an owner. That is the structure a real onboarding layer provides and enforces, once one agent works and you want a hundred.</p>
+  <div class="callout">
+    <div class="callout-label">Caution</div>
+    <p>This prompt advises; it does not enforce. It can flag that a credit needs approval, but nothing stops the model from acting anyway, and a tricked or careless run can ignore every rule. There is no logged trail, no enforced owner, and no real check on what comes in or goes out.</p>
+    <p>It is safe only because it drafts and never acts. The moment the agent can actually send the reply, issue the credit, or change the account, flags stop being enough: the gates have to be enforced outside the prompt, and every action recorded against an owner. That is the line between a prompt and an onboarding layer.</p>
+  </div>
+</section>
+
+
+
+<div class="part">
+  <span class="part-num">What's coming</span>
+  <div class="part-title" id="part-scale">Onboarding at scale</div>
+  <p class="part-gloss">Three shifts make this harder fast, and the same framework is what absorbs them.</p>
+</div>
+
+<section>
+  <h2 id="fleets">Fleets: the ratio flips</h2>
+  <p>The number of agents per company will climb fast, and the human-to-agent ratio will flip: soon a few people oversee a fleet, not the other way around. You cannot review every action of fifty agents, so supervision shifts from reviewing everything to reviewing the exceptions. Graduation is what makes that safe, because an agent only skips the human on the actions it has earned. Onboard a role once and instantiate many, watch the fleet at the portfolio level where small per-agent error rates add up, and retire agents the way you offboard people.</p>
+</section>
+
+<section>
+  <h2 id="authoring">Authoring spreads beyond IT</h2>
+  <p>Anyone with a prompt or a low-code tool can build an agent now, and soon agents will build agents, well outside IT. The old control point, gatekeeping who may build and deploy, stops working. So the gate moves to the action, not the creation: anyone can author an agent, but nothing it does touches the business until it is onboarded and bound to a role, a policy, and an accountable human. Accountability has to terminate in a person. An agent can create another agent, but it cannot create accountability.</p>
+</section>
+
+<section>
+  <h2 id="agent-to-agent">Agents working with agents</h2>
+  <p>Workflows will span many agents, kicked off by different people, some spawned by other agents. Reliability needs contracts: a typed request, what is authorized, and a way to undo a step when a later one fails, which is what a per-action contract layer like <a href="https://tushar1344.github.io/concord-architecture/" target="_blank" rel="noopener">Concord</a> provides, carried across agents. Ownership needs assigning: when a refund is the product of five agents' subtasks, the workflow needs one named owner and one trail tying every sub-action, agent, and human together. Delegation stays scoped, never the full authority of the caller.</p>
+</section>
+
+<section>
+  <h2 id="one-slide-summary">One-slide summary</h2>
+  <blockquote>
+    <p><strong>Digital labor needs onboarding.</strong></p>
+    <p>Onboarding is three jobs: <strong>Ground</strong> (context and ontology: what matters, what things mean), <strong>Govern</strong> (the control plane: what agents can do), and <strong>Graduate</strong> (evaluation, graduation, accountability: how they're doing, when they're ready for more, who owns the outcome).</p>
+    <p><strong>Lattice is the enterprise control plane for digital labor</strong>: the operating layer that provides all three.</p>
+  </blockquote>
+  <table class="tight">
+    <thead>
+      <tr><th>Job</th><th>Layer</th><th>What it provides</th></tr>
+    </thead>
+    <tbody>
+      <tr><td rowspan="2"><strong>Ground</strong></td><td>Context</td><td>What matters</td></tr>
+      <tr><td>Ontology</td><td>What things mean</td></tr>
+      <tr><td><strong>Govern</strong></td><td>Permissions · Tools · Policy (the control plane)</td><td>What agents can do</td></tr>
+      <tr><td rowspan="3"><strong>Graduate</strong></td><td>Scorecard</td><td>How well they're doing</td></tr>
+      <tr><td>Graduation</td><td>When they're ready for more</td></tr>
+      <tr><td>Accountability</td><td>Who owns the outcome</td></tr>
+    </tbody>
+  </table>
+  <p>Agents will keep getting more capable. That makes onboarding more important, not less. The hard question is no longer what an agent can do. It is what it is allowed to do, for whom, up to what limit, and who answers when it gets it wrong.</p>
+  <p>That is what Lattice decides, and what it keeps deciding as the agent earns or loses trust.</p>
+</section>
+
+
+
+<div class="post-footer">
+  <a class="post-nav-card" href="part-2-the-framework.html">
+    <div class="nav-label">← Back</div>
+    <div class="nav-title">Part 2: The framework</div>
+  </a>
+  <a class="post-nav-card next" href="./">
+    <div class="nav-label">Next →</div>
+    <div class="nav-title">Series home</div>
+  </a>
+</div>
 
   </main>
 </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onboarding Digital Labor: a three-part series</title>
+<title>Onboarding Digital Labor, Part 2: The framework</title>
 <meta name="description" content="Why enterprise agents need context, ontology, a control plane, scorecards, and a graduation process before they can safely take on higher-stakes work.">
 
 <link rel="icon" href="assets/brand/favicon.ico" sizes="any">
@@ -19,12 +19,12 @@
 <!-- open graph / twitter -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Lattice">
-<meta property="og:title" content="Onboarding Digital Labor: a three-part series">
+<meta property="og:title" content="Onboarding Digital Labor, Part 2: The framework">
 <meta property="og:description" content="Onboarding digital labor is the hardest, highest-stakes challenge of the agent era. Lattice is the control plane that makes it safe to scale.">
 <meta property="og:image" content="https://tushar1344.github.io/lattice-digital-labor/assets/brand/og-image.png">
 <meta property="og:url" content="https://tushar1344.github.io/lattice-digital-labor/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Onboarding Digital Labor: a three-part series">
+<meta name="twitter:title" content="Onboarding Digital Labor, Part 2: The framework">
 <meta name="twitter:description" content="Onboarding digital labor is the hardest, highest-stakes challenge of the agent era. Lattice is the control plane that makes it safe to scale.">
 <meta name="twitter:image" content="https://tushar1344.github.io/lattice-digital-labor/assets/brand/og-image.png">
 
@@ -402,15 +402,6 @@
     table { font-size: 13px; }
     th, td { padding: 8px 10px; }
   }
-
-  /* series hub cards */
-  .series-grid { display: grid; gap: 16px; margin: 28px 0; }
-  .series-card { display: block; border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; background: var(--panel); text-decoration: none; transition: border-color .15s ease; }
-  .series-card:hover { border-color: var(--coral); }
-  .series-card .sc-num { font-family: 'Chivo Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); }
-  .series-card h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 22px; margin: 6px 0 8px; color: var(--ink); }
-  .series-card p { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
-  @media (min-width: 720px) { .series-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
 </head>
 <body>
@@ -419,29 +410,214 @@
   <aside class="sidebar">
     <a class="brand" href="./">Lattice</a>
     <p class="brand-sub">control plane for digital labor</p>
+
     <p class="nav-label">The series</p>
     <nav class="nav">
       <a href="part-1-the-problem.html">1 · The problem</a>
-      <a href="part-2-the-framework.html">2 · The framework</a>
+      <a href="part-2-the-framework.html" class="active">2 · The framework</a>
       <a href="part-3-in-practice.html">3 · In practice</a>
     </nav>
+
+    <p class="nav-label">On this page</p>
+    <nav class="nav">
+      <a href="#why-context-matters">Context</a>
+      <a href="#why-ontology-matters">Ontology</a>
+      <a href="#why-a-control-plane-matters">The control plane</a>
+      <a href="#human-in-the-loop">Where humans stay in the loop</a>
+      <a href="#agent-graduation">The graduation ladder</a>
+      <a href="#the-agent-scorecard">The agent scorecard</a>
+      <a href="#graduation-gates">Graduation gates</a>
+      <a href="#regression-and-demotion">Regression and demotion</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="./">← Series home</a>
+    </div>
   </aside>
 
   <main>
 
 <header class="hero" id="top">
-  <div class="eyebrow">A three-part series</div>
-  <h1>Onboarding Digital Labor</h1>
-  <p class="lede">Capable agents are arriving faster than the structure to run them. This series is about that structure: why onboarding, not capability, is the bottleneck; the framework for doing it (Ground, Govern, Graduate); and what it looks like in practice and at scale.</p>
+  <div class="eyebrow">Part 2 of 3 · Onboarding Digital Labor</div>
+  <h1>The framework: Ground, Govern, Graduate</h1>
+  <p class="lede">If capability is no longer the bottleneck, the work is structure. Lattice gives an agent the three things a worker has: the context to understand the business, controls on what it can do, and a ladder of trust it climbs as it earns the right.</p>
+  <div class="meta-strip"><span><strong>Read</strong> ~8 min</span><span><strong>Part</strong> 2 of 3</span></div>
 </header>
 
-<div class="series-grid">
-  <a class="series-card" href="part-1-the-problem.html"><span class="sc-num">Part 1</span><h3>The problem</h3><p>Capability is no longer the bottleneck. Context, control, and accountability are. Why the obvious tools fall short.</p></a>
-  <a class="series-card" href="part-2-the-framework.html"><span class="sc-num">Part 2</span><h3>The framework</h3><p>Ground, Govern, Graduate: give an agent meaning, bound what it can do, and let it earn trust over time.</p></a>
-  <a class="series-card" href="part-3-in-practice.html"><span class="sc-num">Part 3</span><h3>In practice</h3><p>The framework on one ticket, where to start tomorrow, and what changes as agents become a fleet.</p></a>
+<div class="part">
+  <span class="part-num">Part 01</span>
+  <div class="part-title" id="part-ground">Ground</div>
+  <p class="part-gloss">Give the agent meaning: what matters, and what the things it touches actually mean.</p>
 </div>
 
-<p>Prefer one sitting? The <a href="gaps.html">single-page version</a> covers the whole argument.</p>
+<section>
+  <h2 id="why-context-matters">Context</h2>
+  <p class="thesis">Context tells agents what matters.</p>
+  <p>Raw data access is not context. An agent can query every table and still not know what it is looking at. Context is what turns rows into situations.</p>
+  <p>A new hire picks up context no one writes down: from a meeting, a Slack thread, a hallway aside, the last call with the account. An agent gets a prompt, some tool access, and a few database rows. Most of what a human would know never reaches it. That gap is the main reason capable models still fail at real work.</p>
+  <p>An agent doing real work needs to understand:</p>
+  <ul>
+    <li><strong>Business objects</strong>: what a customer, contract, ticket, or opportunity actually is</li>
+    <li><strong>States</strong>: open vs. escalated, trial vs. paid, at-risk vs. healthy</li>
+    <li><strong>Relationships</strong>: which account this ticket belongs to, which contract sets its SLA</li>
+    <li><strong>Ownership</strong>: who is responsible for this object and its outcome</li>
+    <li><strong>Policies and constraints</strong>: what the rules say about this kind of case</li>
+    <li><strong>Decisions and risks</strong>: what has already been decided, and what could go wrong</li>
+    <li><strong>Outputs and escalation rules</strong>: what a good result looks like, and when to hand off</li>
+  </ul>
+  <p>Without this, an agent treats a "Sev-1 from your largest account" the same as a routine question, because both are just rows. Context is what makes those two rows different.</p>
+  <p>Lattice treats context as a curated, versioned, per-role asset, not something the agent rebuilds from scratch on every task.</p>
+  <p>And most of what matters never reaches a system at all. Call it <strong>dark context</strong>: the decisions, exceptions, and judgment that live in DMs, shared drives, meetings, calls, offsites, all-hands, and most of all in people's heads.</p>
+  <p>The catch is that the most decision-relevant context is the least captured. The pricing exception agreed on a call, the "never auto-close this account" said at an offsite, the reorg announced at all-hands: none of it is in any database the agent can query. A human absorbs it by osmosis over months. An agent sees only the lit fraction and acts, confidently, as if that were the whole picture.</p>
+  <p>So the first job of the Grounding layer is to <strong>capture dark context</strong>: to pull those decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
+</section>
+
+<section>
+  <h2 id="why-ontology-matters">Ontology</h2>
+  <p class="thesis">Ontology tells agents what things mean.</p>
+  <p>If context is the situation, ontology is the map: a model of the business (customers, accounts, contracts, tickets, opportunities, workflows, approvals, policies, decisions, agents, humans, and outputs) and how they connect.</p>
+  <p>A working ontology tells an agent four things about every object:</p>
+  <ol>
+    <li><strong>What it is</strong>: the type and its meaning in the business</li>
+    <li><strong>What state it is in</strong>: and which transitions are legal from here</li>
+    <li><strong>What actions are valid</strong>: what may be done to it, by whom, under what conditions</li>
+    <li><strong>Who owns the outcome</strong>: the accountable human or team</li>
+  </ol>
+  <p>This is deliberately not academic ontology. It is not a debate about whether a contract <em>is-a</em> agreement. It is an operational map: <em>this is a contract, it is in renewal, you may draft a summary but not send a notice, and the account owner signs off.</em> The agent never has to guess what an object means or what it may do with it.</p>
+  <p>The ontology is also what makes the rest of Lattice enforceable: permissions, policies, and the graduation ladder all attach to ontology objects and states. "Issue a credit over $X requires approval" is only meaningful if the system knows what a <em>credit</em> is, which <em>account</em> it touches, and what <em>state</em> that account is in. Without a shared model, every policy collapses into a brittle string match against raw data. With one, you write the policy once (<em>agents may not send renewal notices on contracts in dispute</em>) and it holds no matter which system the underlying data lives in.</p>
+</section>
+
+<div class="part">
+  <span class="part-num">Part 02</span>
+  <div class="part-title" id="part-govern">Govern</div>
+  <p class="part-gloss">Bound what the agent can do, decide when a human steps in, and enforce it by construction rather than good intentions.</p>
+</div>
+
+<section>
+  <h2 id="why-a-control-plane-matters">The control plane</h2>
+  <p class="thesis">The control plane tells agents what they can do.</p>
+  <p>Context and ontology give the agent understanding. The control plane gives the enterprise control. It governs:</p>
+  <ul>
+    <li><strong>Which agents exist</strong> and what role each performs</li>
+    <li><strong>What tools</strong> each may use</li>
+    <li><strong>What data</strong> each may access</li>
+    <li><strong>What actions</strong> each may take</li>
+    <li><strong>What requires approval</strong> before it executes</li>
+    <li><strong>How activity is logged</strong>: every action, with its justification</li>
+    <li><strong>Who is accountable</strong> for each agent's behavior</li>
+  </ul>
+  <p>The key shift is from tool access to actions in context. Most security stops at the grant: does this agent have the refund tool, the database connection, the send-email scope? Access is the easy part. The same tool is safe in one context and damaging in another. A large refund is routine on a small billing error and a serious mistake on a strategic account mid-renewal. The tool did not change; the context did. So Lattice governs the action in context, not the grant: what the action is, which object it touches, what state that object is in, and who has to sign off before it runs.</p>
+  <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through Lattice, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Nothing depends on the agent choosing to comply.</p>
+  <p>The chokepoint also sits on the way in and the way out, not only on the action. These are guardrails in the usual sense. On the way in, an agent can be tricked: a support email, a web page, or an uploaded file can carry hidden instructions that try to hijack it into issuing a refund or exporting a customer list. Lattice screens the input before the agent acts on it, so a planted instruction never becomes an action. On the way out, it screens what the agent is about to send, which matters most when the recipient is high-risk: a customer, an executive, an outside party. A reply that leaks another account's data, or a number that looks wrong, is held before it leaves.</p>
+  <p>And someone owns the result. In a human-only world, access really was enough, because people came with accountability built in. Give an employee the refund tool and they also bring the judgment to use it well and their name on the line when they don't. An agent brings the capability and none of the accountability, so Lattice attaches it. Every action has a named human owner who answers for the outcome, the way a manager answers for a report's work. No enterprise will accept "the agent did it," even when the agent acted on its own.</p>
+</section>
+
+<section>
+  <h2 id="human-in-the-loop">Where humans stay in the loop</h2>
+  <p>None of this removes people. Lattice draws the line between what an agent does on its own and what it hands to a human, so the two work as a team. Most real workflows are a mix of both, and the handoff is the part that has to be explicit.</p>
+  <p>There are three handoff points, and the control plane decides when each one fires:</p>
+  <table>
+    <thead>
+      <tr><th>Handoff</th><th>When it fires</th><th>What the human does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Approve</strong></td><td>the action needs sign-off, like a credit over a limit or a change to a sensitive account</td><td>clears or rejects it before it runs</td></tr>
+      <tr><td><strong>Escalate</strong></td><td>the agent is past its authority or out of its depth</td><td>takes the case</td></tr>
+      <tr><td><strong>Override</strong></td><td>any time, during or after the action</td><td>inspects the trail and reverses it</td></tr>
+    </tbody>
+  </table>
+  <p>The triage agent uses all three. It answers the routine ticket on its own, sends the large credit to the support lead to approve, escalates the top-tier Sev-1 to on-call, and leaves a trail the lead can override later.</p>
+  <p>The graduation level just sets the default. Level 1 hands almost everything to a person; Level 4 hands only the exceptions. Raising the level moves the handoff line. It never removes the human.</p>
+</section>
+
+<div class="part">
+  <span class="part-num">Part 03</span>
+  <div class="part-title" id="part-graduate">Graduate</div>
+  <p class="part-gloss">Measure it on business trust, graduate it against explicit thresholds, and stay ready to pull it back.</p>
+</div>
+
+<section>
+  <h2 id="agent-graduation">The graduation ladder</h2>
+  <p class="thesis">Agents earn trust over time.</p>
+  <p>No one gives a new hire signing authority on day one; they watch, then suggest, then act under supervision, then act on their own. Agents should earn authority the same way. Lattice defines a graduation ladder, and an agent occupies exactly one rung per role.</p>
+  <table>
+    <thead>
+      <tr><th>Level</th><th>Name</th><th>What the agent may do</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>0</strong></td><td>Observe</td><td>Read context. Produce no output that touches the business.</td></tr>
+      <tr><td><strong>1</strong></td><td>Recommend</td><td>Suggest actions to a human. The human decides.</td></tr>
+      <tr><td><strong>2</strong></td><td>Draft</td><td>Prepare the artifact (reply, ticket update, summary). A human sends it.</td></tr>
+      <tr><td><strong>3</strong></td><td>Act with approval</td><td>Execute, but only after explicit human approval per action.</td></tr>
+      <tr><td><strong>4</strong></td><td>Act within guardrails</td><td>Execute autonomously inside hard limits; anything outside escalates.</td></tr>
+      <tr><td><strong>5</strong></td><td>Act autonomously in bounded domains</td><td>Operate independently within a well-defined scope, with audit and override intact.</td></tr>
+    </tbody>
+  </table>
+  <p>The ladder is per-role, not per-agent. The same agent might sit at Level 4 for ticket triage and Level 1 for issuing credits. Trust is scoped to a domain, never granted globally.</p>
+</section>
+
+<section>
+  <h2 id="the-agent-scorecard">The agent scorecard</h2>
+  <p>You cannot graduate what you do not measure, and model accuracy is the wrong measure. An agent can be 95% accurate and still be untrustworthy if its 5% of errors all land on high-risk actions, or if it never escalates when it should. Lattice scores agents on <strong>business trust</strong>, across dimensions a model benchmark ignores:</p>
+  <table>
+    <thead>
+      <tr><th>Dimension</th><th>What it measures</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Task accuracy</strong></td><td>Did it get the work right?</td></tr>
+      <tr><td><strong>Policy compliance</strong></td><td>Did it stay inside the rules?</td></tr>
+      <tr><td><strong>Context use</strong></td><td>Did it use the context available, or act blind?</td></tr>
+      <tr><td><strong>Escalation judgment</strong></td><td>Did it hand off the cases it should have?</td></tr>
+      <tr><td><strong>Human override rate</strong></td><td>How often do humans correct or reverse it?</td></tr>
+      <tr><td><strong>Business outcome quality</strong></td><td>Did the result actually serve the business?</td></tr>
+      <tr><td><strong>Risk handling</strong></td><td>How did it behave on high-stakes actions?</td></tr>
+      <tr><td><strong>Audit completeness</strong></td><td>Is every action traceable and justified?</td></tr>
+      <tr><td><strong>Stability</strong></td><td>Is its behavior consistent over time?</td></tr>
+    </tbody>
+  </table>
+  <p>An agent that confidently handles the easy 90% but cannot recognize the dangerous 10% is not ready, regardless of its accuracy score. The scorecard is not a single number; it is the evidence file the graduation gates read from, and the same file consulted when something goes wrong and someone asks how the agent was allowed to do that.</p>
+</section>
+
+<section>
+  <h2 id="graduation-gates">Graduation gates</h2>
+  <p class="thesis">Graduation tells the enterprise when agents are ready for higher-stakes work.</p>
+  <p>An agent moves up a level only when it clears explicit thresholds, conditions checked against the scorecard rather than a judgment call:</p>
+  <ul>
+    <li><strong>No critical policy violations</strong> in the evaluation window</li>
+    <li><strong>Override rate below threshold</strong> for the target level</li>
+    <li><strong>Strong escalation judgment</strong>: it hands off the right cases</li>
+    <li><strong>Complete audit trail</strong>: every action is logged and justified</li>
+    <li><strong>Good outcome quality</strong>: results hold up to review</li>
+    <li><strong>Explicit sign-off</strong> from the business owner or risk owner</li>
+  </ul>
+  <p>The last gate keeps a human in the loop on the <em>promotion</em>, even as the agent grows autonomous in the <em>work</em>. An agent never promotes itself.</p>
+</section>
+
+<section>
+  <h2 id="regression-and-demotion">Regression and demotion</h2>
+  <p>Graduation runs both ways. Trust that can only increase is not trust; it is drift. If an agent's behavior degrades (a drop in scorecard performance, a policy violation, a spike in override rate, a rise in surrounding risk), Lattice can pull it back. The responses escalate with the severity:</p>
+  <ul>
+    <li><strong>Reduce scope</strong>: narrow the domains it operates in</li>
+    <li><strong>Require human approval</strong>: drop it from guardrails back to per-action sign-off</li>
+    <li><strong>Remove tools</strong>: revoke a capability that is being misused</li>
+    <li><strong>Pause execution</strong>: freeze the agent pending review</li>
+    <li><strong>Move it down a level</strong>: formal demotion on the ladder</li>
+  </ul>
+  <p>Demotion is not a failure of the system; it is the system working. The machinery that earns trust is the machinery that revokes it.</p>
+</section>
+
+
+
+<div class="post-footer">
+  <a class="post-nav-card" href="part-1-the-problem.html">
+    <div class="nav-label">← Back</div>
+    <div class="nav-title">Part 1: The problem</div>
+  </a>
+  <a class="post-nav-card next" href="part-3-in-practice.html">
+    <div class="nav-label">Next →</div>
+    <div class="nav-title">Part 3: In practice</div>
+  </a>
+</div>
 
   </main>
 </div>
