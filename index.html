@@ -415,7 +415,6 @@
     <nav class="nav">
       <a href="#the-core-problem">The core problem</a>
       <a href="#existing-systems">Existing systems</a>
-      <a href="#the-bets">The bets</a>
       <a href="#the-primitive-model">The primitive model</a>
     </nav>
 
@@ -462,6 +461,7 @@
 <div class="lead-in">
   <p>Why is it so hard? Because a prompt configures a model. It does not onboard a worker. When a human joins a team, they inherit far more than instructions: a role, the context behind it, a mental map of the business, permissions, tools, the policies that bound their judgment, a manager who reviews their work, and an accountable place in the org chart. Agents arrive with none of this. We hand them a prompt and an API key, then act surprised when they behave like contractors who started an hour ago and already have the keys to production. <strong>Digital labor cannot be onboarded with prompts alone.</strong></p>
   <p><strong>Lattice is the enterprise control plane for digital labor.</strong> It gives agents business context, models the business through an ontology, governs what agents can see and do, scores their performance, and graduates them into higher-trust work over time.</p>
+  <p>The bet behind it is simple. Capable models are becoming common. The scarce thing is the authority to let one act on your business, and that has to be built.</p>
   <p>This note explains the layer Lattice owns, the primitives it uses, and how an agent moves from <em>observing</em> to <em>acting autonomously</em> without the enterprise losing the thread of who is accountable.</p>
 </div>
 
@@ -504,19 +504,6 @@
   </table>
   <p>The rule: Lattice owns the decisions, and composes with everything that stores, retrieves, or executes. It should be the one layer still standing after a customer has swapped every other layer twice.</p>
   <p class="pull">Granting an agent database access is not onboarding. It's giving a new hire a master keycard and no manager.</p>
-</section>
-
-<section>
-  <h2 id="the-bets">The bets</h2>
-  <p>Underneath the architecture sits a worldview. Lattice starts from five bets about the agent era.</p>
-  <ol class="bets">
-    <li><strong>Models will keep getting more capable.</strong> They will read more, reason better, use more tools, and take on more categories of knowledge work.</li>
-    <li><strong>The bottleneck moves from intelligence to authority.</strong> The hard question stops being "can the model do this?" and becomes "<em>should</em> this agent be allowed to do this, on this object, in this state, for this customer, under these conditions?"</li>
-    <li><strong>Humans keep owning accountability.</strong> No enterprise will accept "the agent did it" as an operating model. Every agent action needs a human owner, a review path, and a business function that stands behind the outcome.</li>
-    <li><strong>Agents are under-contextualized by default.</strong> Humans become useful by absorbing context from meetings, Slack, docs, calls, exceptions, customer history, and organizational memory. Agents usually get a prompt, tool access, and a few database rows.</li>
-    <li><strong>Intelligence without context is risky or unproductive.</strong> A capable model with no business context produces answers that are technically correct and operationally wrong. It optimizes the local task while missing the account history, legal risk, escalation path, exception policy, or human owner that changes what should happen.</li>
-  </ol>
-  <p>If those bets are right, the hard part of agents is no longer capability. It is onboarding, and the rest of this note is the architecture for it.</p>
 </section>
 
 <section>
@@ -565,6 +552,7 @@
   <h2 id="why-context-matters">Context</h2>
   <p class="thesis">Context tells agents what matters.</p>
   <p>Raw data access is not context. An agent can query every table and still not know what it is looking at. Context is what turns rows into situations.</p>
+  <p>A new hire picks up context no one writes down: from a meeting, a Slack thread, a hallway aside, the last call with the account. An agent gets a prompt, some tool access, and a few database rows. Most of what a human would know never reaches it. That gap is the main reason capable models still fail at real work.</p>
   <p>An agent doing real work needs to understand:</p>
   <ul>
     <li><strong>Business objects</strong>: what a customer, contract, ticket, or opportunity actually is</li>
@@ -627,6 +615,7 @@
   </ul>
   <p>The control plane is where understanding meets authority. An agent may <em>understand</em> that a refund would resolve a ticket and still be barred from issuing one above a threshold without sign-off. That gap, between what an agent could do and what it is permitted to do, is the surface the control plane governs: the difference between an agent that reasons and an agent allowed to act on its reasoning.</p>
   <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through Lattice, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Policy is enforced by construction, not by good intentions.</p>
+  <p>And someone owns the result. No enterprise will accept "the agent did it." Every action carries a named human owner who answers for the outcome, the way a manager answers for a report's work. That stays true even when the agent acts on its own.</p>
 </section>
 
 <div class="part">
@@ -902,7 +891,6 @@
         <span class="toc-grp">Setup</span>
         <a href="#the-core-problem">The core problem</a>
         <a href="#existing-systems">Existing systems</a>
-        <a href="#the-bets">The bets</a>
         <a href="#the-primitive-model">The primitive model</a>
         <span class="toc-grp">01 · Ground</span>
         <a href="#why-context-matters">Context</a>
