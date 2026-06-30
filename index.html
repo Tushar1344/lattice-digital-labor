@@ -469,7 +469,7 @@
   <h2 id="the-core-problem">Capability is arriving before onboarding</h2>
   <p>The enterprise agent stack is improving from the bottom up. Models are getting better. Tool use is getting easier. Agent frameworks are becoming more capable. Observability is improving. Workflows are easier to automate.</p>
   <p>But the onboarding layer is missing.</p>
-  <p>And it is missing right when it is needed most. Models have just crossed the line from <em>answering</em> to <em>acting</em>. A system that only answers can be wrong harmlessly: a human reads the output and decides what to do with it. An agent that acts is wrong <em>in production</em>. That is what flips the binding constraint from intelligence to authority, and it flips this year, not someday.</p>
+  <p>And it is missing right when it is needed most. Models have just crossed the line from <em>answering</em> to <em>acting</em>. A system that only answers can be wrong harmlessly: a human reads the output and decides what to do with it. An agent that acts is wrong <em>in production</em>. That moves the hard part from intelligence to authority, and it is happening now, not someday.</p>
   <p>Enterprises have ways to give software access. They have ways to run workflows. They have ways to log what happened. What they do not yet have is a systematic way to answer: what does this agent need to know, what is it allowed to do, how much do we trust it, when should that trust increase, and who owns the result?</p>
   <p>That is the layer Lattice occupies.</p>
 </section>
@@ -502,7 +502,7 @@
       <tr><td>the <strong>accountable owner</strong> behind each action</td><td>the runtime, durable execution, vector and memory stores</td></tr>
     </tbody>
   </table>
-  <p>The rule: Lattice owns the decisions, and composes with everything that stores, retrieves, or executes. It should be the one layer still standing after a customer has swapped every other layer twice.</p>
+  <p>The rule: Lattice owns the decisions, and composes with everything that stores, retrieves, or executes. You should be able to swap the model, the agent framework, or the database under it without touching Lattice.</p>
   <p class="pull">Granting an agent database access is not onboarding. It's giving a new hire a master keycard and no manager.</p>
 </section>
 
@@ -591,7 +591,7 @@
     <li><strong>Who owns the outcome</strong>: the accountable human or team</li>
   </ol>
   <p>This is deliberately not academic ontology. It is not a debate about whether a contract <em>is-a</em> agreement. It is an operational map: <em>this is a contract, it is in renewal, you may draft a summary but not send a notice, and the account owner signs off.</em> The agent never has to guess what an object means or what it may do with it.</p>
-  <p>The ontology is also what makes the rest of Lattice enforceable: permissions, policies, and the graduation ladder all attach to ontology objects and states. "Issue a credit over $X requires approval" is only meaningful if the system knows what a <em>credit</em> is, which <em>account</em> it touches, and what <em>state</em> that account is in. Without a shared model, every policy collapses into a brittle string match against raw data. With one, policy becomes a statement about the business (<em>agents may not send renewal notices on contracts in dispute</em>) that holds no matter which system the underlying data lives in. The ontology is the vocabulary; every policy is a sentence written in it.</p>
+  <p>The ontology is also what makes the rest of Lattice enforceable: permissions, policies, and the graduation ladder all attach to ontology objects and states. "Issue a credit over $X requires approval" is only meaningful if the system knows what a <em>credit</em> is, which <em>account</em> it touches, and what <em>state</em> that account is in. Without a shared model, every policy collapses into a brittle string match against raw data. With one, you write the policy once (<em>agents may not send renewal notices on contracts in dispute</em>) and it holds no matter which system the underlying data lives in.</p>
 </section>
 
 <div class="part">
@@ -614,7 +614,7 @@
     <li><strong>Who is accountable</strong> for each agent's behavior</li>
   </ul>
   <p>The control plane is where understanding meets authority. An agent may <em>understand</em> that a refund would resolve a ticket and still be barred from issuing one above a threshold without sign-off. That gap, between what an agent could do and what it is permitted to do, is the surface the control plane governs: the difference between an agent that reasons and an agent allowed to act on its reasoning.</p>
-  <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through Lattice, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Policy is enforced by construction, not by good intentions.</p>
+  <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through Lattice, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Nothing depends on the agent choosing to comply.</p>
   <p>And someone owns the result. No enterprise will accept "the agent did it." Every action carries a named human owner who answers for the outcome, the way a manager answers for a report's work. That stays true even when the agent acts on its own.</p>
 </section>
 
@@ -867,8 +867,8 @@
       <tr><td>Accountability</td><td>Who owns the outcome</td></tr>
     </tbody>
   </table>
-  <p>Agents will keep getting more capable. That makes the onboarding layer more important, not less. As intelligence becomes abundant, authority becomes the scarce resource: who has it, what it applies to, how it is earned, when it is revoked, and who answers for the outcome.</p>
-  <p>Lattice is built for that world. It is the layer that turns capable agents into accountable digital labor.</p>
+  <p>Agents will keep getting more capable. That makes onboarding more important, not less. The hard question is no longer what an agent can do. It is what it is allowed to do, for whom, up to what limit, and who answers when it gets it wrong.</p>
+  <p>That is what Lattice decides, and what it keeps deciding as the agent earns or loses trust.</p>
 </section>
 
 <div class="post-footer">
