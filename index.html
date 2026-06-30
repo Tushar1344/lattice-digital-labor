@@ -466,7 +466,7 @@
 </div>
 
 <section>
-  <h2 id="the-core-problem">The core problem: capability is arriving before onboarding</h2>
+  <h2 id="the-core-problem">Capability is arriving before onboarding</h2>
   <p>The enterprise agent stack is improving from the bottom up. Models are getting better. Tool use is getting easier. Agent frameworks are becoming more capable. Observability is improving. Workflows are easier to automate.</p>
   <p>But the onboarding layer is missing.</p>
   <p>And it is missing right when it is needed most. Models have just crossed the line from <em>answering</em> to <em>acting</em>. A system that only answers can be wrong harmlessly: a human reads the output and decides what to do with it. An agent that acts is wrong <em>in production</em>. That is what flips the binding constraint from intelligence to authority, and it flips this year, not someday.</p>
@@ -475,7 +475,7 @@
 </section>
 
 <section>
-  <h2 id="existing-systems">Existing systems are necessary but insufficient</h2>
+  <h2 id="existing-systems">What the existing tools miss</h2>
   <p>IAM, workflow engines, observability, vector databases, agent frameworks: each solves part of the problem. Lattice is easiest to place by what it is <em>not</em>:</p>
   <table>
     <thead>
@@ -562,7 +562,7 @@
 </div>
 
 <section>
-  <h2 id="why-context-matters">Why context matters</h2>
+  <h2 id="why-context-matters">Context</h2>
   <p class="thesis">Context tells agents what matters.</p>
   <p>Raw data access is not context. An agent can query every table and still not know what it is looking at. Context is what turns rows into situations.</p>
   <p>An agent doing real work needs to understand:</p>
@@ -592,7 +592,7 @@
 </section>
 
 <section>
-  <h2 id="why-ontology-matters">Why ontology matters</h2>
+  <h2 id="why-ontology-matters">Ontology</h2>
   <p class="thesis">Ontology tells agents what things mean.</p>
   <p>If context is the situation, ontology is the map: a model of the business (customers, accounts, contracts, tickets, opportunities, workflows, approvals, policies, decisions, agents, humans, and outputs) and how they connect.</p>
   <p>A working ontology tells an agent four things about every object:</p>
@@ -613,7 +613,7 @@
 </div>
 
 <section>
-  <h2 id="why-a-control-plane-matters">Why a control plane matters</h2>
+  <h2 id="why-a-control-plane-matters">The control plane</h2>
   <p class="thesis">The control plane tells agents what they can do.</p>
   <p>Context and ontology give the agent understanding. The control plane gives the enterprise control. It governs:</p>
   <ul>
@@ -636,7 +636,7 @@
 </div>
 
 <section>
-  <h2 id="agent-graduation">Agent graduation</h2>
+  <h2 id="agent-graduation">The graduation ladder</h2>
   <p class="thesis">Agents earn trust over time.</p>
   <p>No one gives a new hire signing authority on day one; they watch, then suggest, then act under supervision, then act on their own. Agents should earn authority the same way. Lattice defines a graduation ladder, and an agent occupies exactly one rung per role.</p>
   <table>
@@ -712,7 +712,7 @@
 </div>
 
 <section>
-  <h2 id="concrete-example">Concrete example: a support triage agent</h2>
+  <h2 id="concrete-example">A support triage agent</h2>
   <p>A support triage agent reads inbound tickets, gathers context, and resolves or routes them. Here is what Lattice wraps around it.</p>
   <h3>Context it receives</h3>
   <ul>
