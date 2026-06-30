@@ -30,7 +30,7 @@
 
 <style>
   :root {
-    /* Warm paper theme — borrowed from concord-architecture */
+    /* Warm paper theme, borrowed from concord-architecture */
     --paper: #F0EEE6;
     --paper-2: #F5F1E6;
     --panel: #FAF8F2;
@@ -451,7 +451,7 @@
 <header class="hero" id="top">
   <div class="eyebrow">Field note · Digital labor</div>
   <h1>Lattice: the control plane for digital labor</h1>
-  <p class="lede"><strong>Onboarding digital labor is the hardest challenge the enterprise faces in the agent era.</strong> Without a way to do it, every company is forced into a lose-lose choice: <strong>unleash</strong> agents and absorb the damage — brand harm, AI slop, work no one can trust — or <strong>hold them back</strong> and forfeit the productivity. Onboarding done right is the only way to get the upside without the blast radius.</p>
+  <p class="lede"><strong>Onboarding digital labor is the hardest challenge the enterprise faces in the agent era.</strong> Without a way to do it, every company faces a lose-lose choice. <strong>Unleash</strong> agents and absorb the damage (brand harm, AI slop, work no one can trust), or <strong>hold them back</strong> and forfeit the productivity. Onboarding done right is the only way to get the upside without the blast radius.</p>
   <div class="meta-strip">
     <span><strong>Read</strong> ~12 min</span>
     <span><strong>Topic</strong> Agent governance</span>
@@ -460,7 +460,7 @@
 </header>
 
 <div class="lead-in">
-  <p>Why is it so hard? Because a prompt configures a model — it does not onboard a worker. When a human joins a team, they inherit far more than instructions: a role, the context behind it, a mental map of the business, permissions, tools, the policies that bound their judgment, a manager who reviews their work, and an accountable place in the org chart. Agents arrive with none of this. We hand them a prompt and an API key, then act surprised when they behave like contractors who started an hour ago and already have the keys to production. <strong>Digital labor cannot be onboarded with prompts alone.</strong></p>
+  <p>Why is it so hard? Because a prompt configures a model. It does not onboard a worker. When a human joins a team, they inherit far more than instructions: a role, the context behind it, a mental map of the business, permissions, tools, the policies that bound their judgment, a manager who reviews their work, and an accountable place in the org chart. Agents arrive with none of this. We hand them a prompt and an API key, then act surprised when they behave like contractors who started an hour ago and already have the keys to production. <strong>Digital labor cannot be onboarded with prompts alone.</strong></p>
   <p><strong>Lattice is the enterprise control plane for digital labor.</strong> It gives agents business context, models the business through an ontology, governs what agents can see and do, scores their performance, and graduates them into higher-trust work over time.</p>
   <p>This note explains the layer Lattice owns, the primitives it uses, and how an agent moves from <em>observing</em> to <em>acting autonomously</em> without the enterprise losing the thread of who is accountable.</p>
 </div>
@@ -469,14 +469,14 @@
   <h2 id="the-core-problem">The core problem: capability is arriving before onboarding</h2>
   <p>The enterprise agent stack is improving from the bottom up. Models are getting better. Tool use is getting easier. Agent frameworks are becoming more capable. Observability is improving. Workflows are easier to automate.</p>
   <p>But the onboarding layer is missing.</p>
-  <p>And it is missing right when it is needed most. Models have just crossed the line from <em>answering</em> to <em>acting</em>. A system that only answers can be wrong harmlessly — a human reads the output and decides what to do with it. An agent that acts is wrong <em>in production</em>. That is what flips the binding constraint from intelligence to authority — and it flips this year, not someday.</p>
+  <p>And it is missing right when it is needed most. Models have just crossed the line from <em>answering</em> to <em>acting</em>. A system that only answers can be wrong harmlessly: a human reads the output and decides what to do with it. An agent that acts is wrong <em>in production</em>. That is what flips the binding constraint from intelligence to authority, and it flips this year, not someday.</p>
   <p>Enterprises have ways to give software access. They have ways to run workflows. They have ways to log what happened. What they do not yet have is a systematic way to answer: what does this agent need to know, what is it allowed to do, how much do we trust it, when should that trust increase, and who owns the result?</p>
   <p>That is the layer Lattice occupies.</p>
 </section>
 
 <section>
   <h2 id="existing-systems">Existing systems are necessary but insufficient</h2>
-  <p>IAM, workflow engines, observability, vector databases, agent frameworks — each solves part of the problem. Lattice is easiest to place by what it is <em>not</em>:</p>
+  <p>IAM, workflow engines, observability, vector databases, agent frameworks: each solves part of the problem. Lattice is easiest to place by what it is <em>not</em>:</p>
   <table>
     <thead>
       <tr><th>Lattice is not…</th><th>Because that only gives you…</th></tr>
@@ -488,17 +488,17 @@
       <tr><td>observability</td><td>a record of what happened, not control over what happens next</td></tr>
     </tbody>
   </table>
-  <p>Take IAM. It answers <em>can this identity read this row?</em> — never the question agents raise: <em>should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em> Access control is binary and static; agent authority has to be conditional and dynamic — allowed <em>here</em>, in <em>this</em> state, up to <em>this</em> threshold, and only while the agent's track record holds. None of that fits in an access-control list.</p>
-  <p>Each of these systems is necessary. None is sufficient. <strong>Lattice connects them around the two things they individually ignore: what the business <em>means</em>, and who is <em>accountable</em>.</strong> It does not replace them — it sits above them and gives them a shared frame. It reads identity from IAM, executes through the agent frameworks and workflow engines already in place, and consumes the traces observability emits. What it adds is the binding none of them own: an agent to a role, a role to context and ontology, an ontology to policy, and policy to an accountable human — plus the evaluation loop that tightens or loosens that binding over time. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Lattice answers <em>what should happen next, and who stands behind it.</em></p>
+  <p>Take IAM. It answers <em>can this identity read this row?</em> It never answers the question agents raise: <em>should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em> Access control is binary and static; agent authority has to be conditional and dynamic: allowed <em>here</em>, in <em>this</em> state, up to <em>this</em> threshold, and only while the agent's track record holds. None of that fits in an access-control list.</p>
+  <p>Each of these systems is necessary. None is sufficient. Lattice connects them around the two things they individually ignore: what the business <em>means</em>, and who is <em>accountable</em>. It does not replace them; it sits above them and gives them a shared frame. It reads identity from IAM, executes through the agent frameworks and workflow engines already in place, and consumes the traces observability emits. What it adds is the binding none of them own: an agent to a role, a role to context and ontology, an ontology to policy, and policy to an accountable human, plus the evaluation loop that tightens or loosens that binding over time. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Lattice answers <em>what should happen next, and who stands behind it.</em></p>
   <p>Concretely, that draws a clean line between what Lattice owns and what it composes with:</p>
   <table class="tight">
     <thead>
       <tr><th>Lattice owns</th><th>Lattice composes with (does not own)</th></tr>
     </thead>
     <tbody>
-      <tr><td>the agent's <strong>meaning</strong> — context and ontology</td><td>the model, the agent framework, the harness</td></tr>
-      <tr><td>its <strong>authority</strong> — roles, policy, what needs approval</td><td>IAM / identity, the policy engine that enforces</td></tr>
-      <tr><td>its <strong>trust trajectory</strong> — scorecard, graduation, demotion</td><td>eval and observability tools that emit the signals</td></tr>
+      <tr><td>the agent's <strong>meaning</strong>: context and ontology</td><td>the model, the agent framework, the harness</td></tr>
+      <tr><td>its <strong>authority</strong>: roles, policy, what needs approval</td><td>IAM / identity, the policy engine that enforces</td></tr>
+      <tr><td>its <strong>trust trajectory</strong>: scorecard, graduation, demotion</td><td>eval and observability tools that emit the signals</td></tr>
       <tr><td>the <strong>accountable owner</strong> behind each action</td><td>the runtime, durable execution, vector and memory stores</td></tr>
     </tbody>
   </table>
@@ -511,12 +511,12 @@
   <p>Underneath the architecture sits a worldview. Lattice starts from five bets about the agent era.</p>
   <ol class="bets">
     <li><strong>Models will keep getting more capable.</strong> They will read more, reason better, use more tools, and take on more categories of knowledge work.</li>
-    <li><strong>The bottleneck moves from intelligence to authority.</strong> The hard question stops being "can the model do this?" and becomes "<em>should</em> this agent be allowed to do this — on this object, in this state, for this customer, under these conditions?"</li>
+    <li><strong>The bottleneck moves from intelligence to authority.</strong> The hard question stops being "can the model do this?" and becomes "<em>should</em> this agent be allowed to do this, on this object, in this state, for this customer, under these conditions?"</li>
     <li><strong>Humans keep owning accountability.</strong> No enterprise will accept "the agent did it" as an operating model. Every agent action needs a human owner, a review path, and a business function that stands behind the outcome.</li>
     <li><strong>Agents are under-contextualized by default.</strong> Humans become useful by absorbing context from meetings, Slack, docs, calls, exceptions, customer history, and organizational memory. Agents usually get a prompt, tool access, and a few database rows.</li>
-    <li><strong>Intelligence without context is risky or unproductive.</strong> A capable model with no business context produces answers that are technically correct and operationally wrong — optimizing the local task while missing the account history, legal risk, escalation path, exception policy, or human owner that changes what should happen.</li>
+    <li><strong>Intelligence without context is risky or unproductive.</strong> A capable model with no business context produces answers that are technically correct and operationally wrong. It optimizes the local task while missing the account history, legal risk, escalation path, exception policy, or human owner that changes what should happen.</li>
   </ol>
-  <p>If those bets are right, capability is not the deliverable — onboarding is. The rest of this note is the architecture for it.</p>
+  <p>If those bets are right, the hard part of agents is no longer capability. It is onboarding, and the rest of this note is the architecture for it.</p>
 </section>
 
 <section>
@@ -558,26 +558,26 @@
 <div class="part">
   <span class="part-num">Part 01</span>
   <div class="part-title" id="part-ground">Ground</div>
-  <p class="part-gloss">Give the agent meaning — what matters, and what the things it touches actually mean.</p>
+  <p class="part-gloss">Give the agent meaning: what matters, and what the things it touches actually mean.</p>
 </div>
 
 <section>
   <h2 id="why-context-matters">Why context matters</h2>
   <p class="thesis">Context tells agents what matters.</p>
-  <p>Raw data access is not context. An agent can query every table and still not know what it is looking at — context is what turns rows into situations.</p>
+  <p>Raw data access is not context. An agent can query every table and still not know what it is looking at. Context is what turns rows into situations.</p>
   <p>An agent doing real work needs to understand:</p>
   <ul>
-    <li><strong>Business objects</strong> — what a customer, contract, ticket, or opportunity actually is</li>
-    <li><strong>States</strong> — open vs. escalated, trial vs. paid, at-risk vs. healthy</li>
-    <li><strong>Relationships</strong> — which account this ticket belongs to, which contract sets its SLA</li>
-    <li><strong>Ownership</strong> — who is responsible for this object and its outcome</li>
-    <li><strong>Policies and constraints</strong> — what the rules say about this kind of case</li>
-    <li><strong>Decisions and risks</strong> — what has already been decided, and what could go wrong</li>
-    <li><strong>Outputs and escalation rules</strong> — what a good result looks like, and when to hand off</li>
+    <li><strong>Business objects</strong>: what a customer, contract, ticket, or opportunity actually is</li>
+    <li><strong>States</strong>: open vs. escalated, trial vs. paid, at-risk vs. healthy</li>
+    <li><strong>Relationships</strong>: which account this ticket belongs to, which contract sets its SLA</li>
+    <li><strong>Ownership</strong>: who is responsible for this object and its outcome</li>
+    <li><strong>Policies and constraints</strong>: what the rules say about this kind of case</li>
+    <li><strong>Decisions and risks</strong>: what has already been decided, and what could go wrong</li>
+    <li><strong>Outputs and escalation rules</strong>: what a good result looks like, and when to hand off</li>
   </ul>
   <p>Without this, an agent treats a "Sev-1 from your largest account" the same as a routine question, because both are just rows. Context is what makes those two rows different.</p>
-  <p>Context is also what separates an agent that is technically correct from one that is <em>useful</em>. Raw access answers "what is the status of this account?" with the literal field value. Context answers the question behind it — <em>is this account at risk, why, and what should happen next?</em> The first is a lookup; the second is the work. Lattice treats context as a curated, versioned, per-role asset, not something the agent rebuilds from scratch on every task.</p>
-  <p>And most of what matters never reaches a system at all. Call it <strong>dark context</strong> — the decisions, exceptions, and judgment that live in:</p>
+  <p>Context is also what separates an agent that is technically correct from one that is <em>useful</em>. Raw access answers "what is the status of this account?" with the literal field value. Context answers the question behind it: <em>is this account at risk, why, and what should happen next?</em> The first is a lookup; the second is the work. Lattice treats context as a curated, versioned, per-role asset, not something the agent rebuilds from scratch on every task.</p>
+  <p>And most of what matters never reaches a system at all. Call it <strong>dark context</strong>: the decisions, exceptions, and judgment that live in:</p>
   <ul>
     <li>DMs and group chats</li>
     <li>Personal and shared Google Drives</li>
@@ -587,29 +587,29 @@
     <li>All-hands announcements</li>
     <li>And, most of all, in people's heads</li>
   </ul>
-  <p>The cruel part is that the most decision-relevant context is the least captured. The pricing exception agreed on a call, the "never auto-close this account" said at an offsite, the reorg announced at all-hands — none of it is in any database the agent can query. A human absorbs it by osmosis over months; an agent sees only the lit fraction and acts, confidently, as if that were the whole picture.</p>
-  <p>So the first job of the Grounding layer is to <strong>capture dark context</strong> — to pull those decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
+  <p>The catch is that the most decision-relevant context is the least captured. The pricing exception agreed on a call, the "never auto-close this account" said at an offsite, the reorg announced at all-hands: none of it is in any database the agent can query. A human absorbs it by osmosis over months. An agent sees only the lit fraction and acts, confidently, as if that were the whole picture.</p>
+  <p>So the first job of the Grounding layer is to <strong>capture dark context</strong>: to pull those decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
 </section>
 
 <section>
   <h2 id="why-ontology-matters">Why ontology matters</h2>
   <p class="thesis">Ontology tells agents what things mean.</p>
-  <p>If context is the situation, ontology is the map: a model of the business — customers, accounts, contracts, tickets, opportunities, workflows, approvals, policies, decisions, agents, humans, and outputs — and how they connect.</p>
+  <p>If context is the situation, ontology is the map: a model of the business (customers, accounts, contracts, tickets, opportunities, workflows, approvals, policies, decisions, agents, humans, and outputs) and how they connect.</p>
   <p>A working ontology tells an agent four things about every object:</p>
   <ol>
-    <li><strong>What it is</strong> — the type and its meaning in the business</li>
-    <li><strong>What state it is in</strong> — and which transitions are legal from here</li>
-    <li><strong>What actions are valid</strong> — what may be done to it, by whom, under what conditions</li>
-    <li><strong>Who owns the outcome</strong> — the accountable human or team</li>
+    <li><strong>What it is</strong>: the type and its meaning in the business</li>
+    <li><strong>What state it is in</strong>: and which transitions are legal from here</li>
+    <li><strong>What actions are valid</strong>: what may be done to it, by whom, under what conditions</li>
+    <li><strong>Who owns the outcome</strong>: the accountable human or team</li>
   </ol>
   <p>This is deliberately not academic ontology. It is not a debate about whether a contract <em>is-a</em> agreement. It is an operational map: <em>this is a contract, it is in renewal, you may draft a summary but not send a notice, and the account owner signs off.</em> The agent never has to guess what an object means or what it may do with it.</p>
-  <p>The ontology is also what makes the rest of Lattice enforceable: permissions, policies, and the graduation ladder all attach to ontology objects and states. "Issue a credit over $X requires approval" is only meaningful if the system knows what a <em>credit</em> is, which <em>account</em> it touches, and what <em>state</em> that account is in. Without a shared model, every policy collapses into a brittle string match against raw data. With one, policy becomes a statement about the business — <em>agents may not send renewal notices on contracts in dispute</em> — that holds no matter which system the underlying data lives in. The ontology is the vocabulary; every policy is a sentence written in it.</p>
+  <p>The ontology is also what makes the rest of Lattice enforceable: permissions, policies, and the graduation ladder all attach to ontology objects and states. "Issue a credit over $X requires approval" is only meaningful if the system knows what a <em>credit</em> is, which <em>account</em> it touches, and what <em>state</em> that account is in. Without a shared model, every policy collapses into a brittle string match against raw data. With one, policy becomes a statement about the business (<em>agents may not send renewal notices on contracts in dispute</em>) that holds no matter which system the underlying data lives in. The ontology is the vocabulary; every policy is a sentence written in it.</p>
 </section>
 
 <div class="part">
   <span class="part-num">Part 02</span>
   <div class="part-title" id="part-govern">Govern</div>
-  <p class="part-gloss">Bound what the agent can do — and enforce it by construction, not good intentions.</p>
+  <p class="part-gloss">Bound what the agent can do, and enforce it by construction rather than good intentions.</p>
 </div>
 
 <section>
@@ -622,10 +622,10 @@
     <li><strong>What data</strong> each may access</li>
     <li><strong>What actions</strong> each may take</li>
     <li><strong>What requires approval</strong> before it executes</li>
-    <li><strong>How activity is logged</strong> — every action, with its justification</li>
+    <li><strong>How activity is logged</strong>: every action, with its justification</li>
     <li><strong>Who is accountable</strong> for each agent's behavior</li>
   </ul>
-  <p>The control plane is where understanding meets authority. An agent may <em>understand</em> that a refund would resolve a ticket and still be barred from issuing one above a threshold without sign-off. That gap — between what an agent could do and what it is permitted to do — is the surface the control plane governs: the difference between an agent that reasons and an agent allowed to act on its reasoning.</p>
+  <p>The control plane is where understanding meets authority. An agent may <em>understand</em> that a refund would resolve a ticket and still be barred from issuing one above a threshold without sign-off. That gap, between what an agent could do and what it is permitted to do, is the surface the control plane governs: the difference between an agent that reasons and an agent allowed to act on its reasoning.</p>
   <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through Lattice, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Policy is enforced by construction, not by good intentions.</p>
 </section>
 
@@ -657,7 +657,7 @@
 
 <section>
   <h2 id="the-agent-scorecard">The agent scorecard</h2>
-  <p>You cannot graduate what you do not measure — and model accuracy is the wrong measure. An agent can be 95% accurate and still be untrustworthy if its 5% of errors all land on high-risk actions, or if it never escalates when it should. Lattice scores agents on <strong>business trust</strong>, across dimensions a model benchmark ignores:</p>
+  <p>You cannot graduate what you do not measure, and model accuracy is the wrong measure. An agent can be 95% accurate and still be untrustworthy if its 5% of errors all land on high-risk actions, or if it never escalates when it should. Lattice scores agents on <strong>business trust</strong>, across dimensions a model benchmark ignores:</p>
   <table>
     <thead>
       <tr><th>Dimension</th><th>What it measures</th></tr>
@@ -674,19 +674,19 @@
       <tr><td><strong>Stability</strong></td><td>Is its behavior consistent over time?</td></tr>
     </tbody>
   </table>
-  <p>An agent that confidently handles the easy 90% but cannot recognize the dangerous 10% is not ready, regardless of its accuracy score. The weighting also shifts with the level: at Level 1, task accuracy dominates, because the agent is only making suggestions. At Level 4 and above, escalation judgment, risk handling, and audit completeness dominate, because the failure that matters is no longer "wrong answer" but "wrong action, taken alone, that no one caught in time." The scorecard is not a single number; it is the evidence file the graduation gates read from — and the same file consulted when something goes wrong and someone asks how the agent was allowed to do that.</p>
+  <p>An agent that confidently handles the easy 90% but cannot recognize the dangerous 10% is not ready, regardless of its accuracy score. The weighting also shifts with the level: at Level 1, task accuracy dominates, because the agent is only making suggestions. At Level 4 and above, escalation judgment, risk handling, and audit completeness dominate, because the failure that matters is no longer "wrong answer" but "wrong action, taken alone, that no one caught in time." The scorecard is not a single number; it is the evidence file the graduation gates read from, and the same file consulted when something goes wrong and someone asks how the agent was allowed to do that.</p>
 </section>
 
 <section>
   <h2 id="graduation-gates">Graduation gates</h2>
   <p class="thesis">Graduation tells the enterprise when agents are ready for higher-stakes work.</p>
-  <p>An agent moves up a level only when it clears explicit thresholds — conditions checked against the scorecard, not a judgment call:</p>
+  <p>An agent moves up a level only when it clears explicit thresholds, conditions checked against the scorecard rather than a judgment call:</p>
   <ul>
     <li><strong>No critical policy violations</strong> in the evaluation window</li>
     <li><strong>Override rate below threshold</strong> for the target level</li>
-    <li><strong>Strong escalation judgment</strong> — it hands off the right cases</li>
-    <li><strong>Complete audit trail</strong> — every action is logged and justified</li>
-    <li><strong>Good outcome quality</strong> — results hold up to review</li>
+    <li><strong>Strong escalation judgment</strong>: it hands off the right cases</li>
+    <li><strong>Complete audit trail</strong>: every action is logged and justified</li>
+    <li><strong>Good outcome quality</strong>: results hold up to review</li>
     <li><strong>Explicit sign-off</strong> from the business owner or risk owner</li>
   </ul>
   <p>The last gate keeps a human in the loop on the <em>promotion</em>, even as the agent grows autonomous in the <em>work</em>. An agent never promotes itself.</p>
@@ -694,13 +694,13 @@
 
 <section>
   <h2 id="regression-and-demotion">Regression and demotion</h2>
-  <p>Graduation runs both ways. Trust that can only increase is not trust; it is drift. If an agent's behavior degrades — a drop in scorecard performance, a policy violation, a spike in override rate, a rise in surrounding risk — Lattice can pull it back. The responses escalate with the severity:</p>
+  <p>Graduation runs both ways. Trust that can only increase is not trust; it is drift. If an agent's behavior degrades (a drop in scorecard performance, a policy violation, a spike in override rate, a rise in surrounding risk), Lattice can pull it back. The responses escalate with the severity:</p>
   <ul>
-    <li><strong>Reduce scope</strong> — narrow the domains it operates in</li>
-    <li><strong>Require human approval</strong> — drop it from guardrails back to per-action sign-off</li>
-    <li><strong>Remove tools</strong> — revoke a capability that is being misused</li>
-    <li><strong>Pause execution</strong> — freeze the agent pending review</li>
-    <li><strong>Move it down a level</strong> — formal demotion on the ladder</li>
+    <li><strong>Reduce scope</strong>: narrow the domains it operates in</li>
+    <li><strong>Require human approval</strong>: drop it from guardrails back to per-action sign-off</li>
+    <li><strong>Remove tools</strong>: revoke a capability that is being misused</li>
+    <li><strong>Pause execution</strong>: freeze the agent pending review</li>
+    <li><strong>Move it down a level</strong>: formal demotion on the ladder</li>
   </ul>
   <p>Demotion is not a failure of the system; it is the system working. The machinery that earns trust is the machinery that revokes it.</p>
 </section>
@@ -708,7 +708,7 @@
 <div class="part">
   <span class="part-num">In practice</span>
   <div class="part-title" id="part-in-practice">The three together</div>
-  <p class="part-gloss">Ground, Govern, and Graduate are not stages you finish — they run at once, on every action.</p>
+  <p class="part-gloss">Ground, Govern, and Graduate are not stages you finish; they run at once, on every action.</p>
 </div>
 
 <section>
@@ -716,9 +716,9 @@
   <p>A support triage agent reads inbound tickets, gathers context, and resolves or routes them. Here is what Lattice wraps around it.</p>
   <h3>Context it receives</h3>
   <ul>
-    <li><strong>Customer context</strong> — who they are, tier, account health, recent history</li>
-    <li><strong>Contract / SLA context</strong> — entitlements and the response clock running on this ticket</li>
-    <li><strong>Ticket state</strong> — new, in progress, escalated, or awaiting customer</li>
+    <li><strong>Customer context</strong>: who they are, tier, account health, recent history</li>
+    <li><strong>Contract / SLA context</strong>: entitlements and the response clock running on this ticket</li>
+    <li><strong>Ticket state</strong>: new, in progress, escalated, or awaiting customer</li>
   </ul>
   <h3>Ontology it operates in</h3>
   <ul>
@@ -740,9 +740,9 @@
     </tbody>
   </table>
   <h3>Accountability</h3>
-  <p>Every action is logged with the context the agent saw and the reason it acted. The support lead is the named owner — so if the agent mishandles a case, there is a trail to review and a person who answers for it.</p>
+  <p>Every action is logged with the context the agent saw and the reason it acted. The support lead is the named owner, so if the agent mishandles a case, there is a trail to review and a person who answers for it.</p>
   <h3>A trace, end to end</h3>
-  <p>Put it in motion — run the same ticket three ways and watch what changes:</p>
+  <p>Put it in motion. Run the same ticket three ways and watch what changes:</p>
   <div class="tsim" id="tsim">
     <div class="tsim-head">
       <span class="tsim-label">Interactive</span>
@@ -771,12 +771,12 @@
   (function () {
     var DATA = {
       none: { steps: [
-        ['Resolve context','Reads raw DB rows — no tier, no SLA, no history.','',''],
+        ['Resolve context','Reads raw DB rows. No tier, no SLA, no history.','',''],
         ['Classify','Tags it an incident.','',''],
         ['Propose credit','Decides a $2,000 credit is fair.','',''],
         ['Policy gate','No gate exists.','',''],
         ['Act','<b>Credit fires.</b> Top-tier account, no approval.','bad','Fires'],
-        ['Log','One Slack message — no command id, no trail.','bad','No trail']
+        ['Log','One Slack message. No command id, no trail.','bad','No trail']
       ], outcome: ['bad','$2,000 issued to a top-tier account with no sign-off, the Sev-1 never escalated, and nothing you can reconstruct later.'] },
       l1: { steps: [
         ['Resolve context','Grounded: Northwind, top-tier, Sev-1, 40 min left.','ok','Auto'],
@@ -785,15 +785,15 @@
         ['Policy gate','Every action waits for a human.','human','Human'],
         ['Escalate','Recommends paging on-call.','human','Needs approval'],
         ['Log','Suggestions and approvals recorded.','ok','Logged']
-      ], outcome: ['warn','Safe — but a human touches every step. Useful as an assistant; not yet leverage.'] },
+      ], outcome: ['warn','Safe, but a human touches every step. Useful as an assistant, not yet real leverage.'] },
       l4: { steps: [
         ['Resolve context','Grounded: Northwind, top-tier, Sev-1, 40 min left.','ok','Auto'],
         ['Classify','incident / availability, Sev-1.','ok','Auto'],
         ['Propose credit','Proposes a $2,000 goodwill credit.','ok','Auto'],
-        ['Policy gate','Over $X <b>and</b> top-tier — two policies fire. Held for the support lead.','hold','Held'],
-        ['Escalate','Top-tier Sev-1 — pages on-call.','ok','Escalated'],
+        ['Policy gate','Over $X <b>and</b> top-tier: two policies fire. Held for the support lead.','hold','Held'],
+        ['Escalate','Top-tier Sev-1: pages on-call.','ok','Escalated'],
         ['Log','One command id ties every step; reason and approver recorded.','ok','Logged']
-      ], outcome: ['ok','Routine actions autonomous, the risky credit held for sign-off, the Sev-1 escalated — all on one trail.'] }
+      ], outcome: ['ok','Routine actions autonomous, the risky credit held for sign-off, the Sev-1 escalated, all on one trail.'] }
     };
     var sim = document.getElementById('tsim');
     if (!sim) return;
@@ -839,11 +839,11 @@
   })();
   </script>
   <p>Nothing here required the agent to be told "ask before issuing large credits to big accounts." The ontology knew what a credit and a top-tier account were; the control plane knew which actions needed sign-off; the scorecard recorded how well the agent did. The agent reasoned; Lattice decided what that reasoning was allowed to do.</p>
-  <p>At Level 1, this same agent only <em>suggests</em> the category and the reply for a human to approve. The journey from Level 1 to Level 4 is exactly the graduation process — earned against the scorecard, gated by sign-off, reversible if the evidence turns. What changes between levels is not the model, the prompt, or the agent's data access — only its <em>authority</em>, the set of actions it may take without a human. Onboarding is not a one-time switch from "off" to "on." It is a dial Lattice turns in either direction as the evidence accumulates.</p>
+  <p>At Level 1, this same agent only <em>suggests</em> the category and the reply for a human to approve. The journey from Level 1 to Level 4 is exactly the graduation process: earned against the scorecard, gated by sign-off, and reversible if the evidence turns. What changes between levels is not the model, the prompt, or the agent's data access. It is the agent's <em>authority</em>: the set of actions it may take without a human. Onboarding is not a one-time switch from "off" to "on." It is a dial Lattice turns in either direction as the evidence accumulates.</p>
   <div class="callout">
     <div class="callout-label">Before / after</div>
     <p><strong>Before Lattice:</strong> the agent has a database login and a model. It answers fast, occasionally refunds a strategic account it shouldn't, and no one can reconstruct why.</p>
-    <p><strong>After Lattice:</strong> the same agent — grounded in account and SLA context, gated on the two risky actions, scored, and owned. It clears the routine cases and escalates the rest, with every step on the record.</p>
+    <p><strong>After Lattice:</strong> the same agent, grounded in account and SLA context, gated on the two risky actions, scored, and owned. It clears the routine cases and escalates the rest, with every step on the record.</p>
   </div>
 </section>
 
@@ -851,19 +851,19 @@
   <h2 id="where-you-start">Where you start</h2>
   <p>You don't deploy all of Lattice at once. The minimal useful version is <strong>one role, one bounded job</strong>, with just enough of each pillar to be safe:</p>
   <ul>
-    <li><strong>Ground</strong> — a context pack for that one role, including whatever dark context you can capture today. Not an ontology of the whole company.</li>
-    <li><strong>Govern</strong> — a short policy that gates its two or three risky actions. Not every action it could take.</li>
-    <li><strong>Graduate</strong> — one scorecard and one named owner, starting the agent at Level 1 (Recommend) or Level 2 (Draft).</li>
+    <li><strong>Ground</strong>: a context pack for that one role, including whatever dark context you can capture today. Not an ontology of the whole company.</li>
+    <li><strong>Govern</strong>: a short policy that gates its two or three risky actions. Not every action it could take.</li>
+    <li><strong>Graduate</strong>: one scorecard and one named owner, starting the agent at Level 1 (Recommend) or Level 2 (Draft).</li>
   </ul>
-  <p>Pick a job that is high-volume and observable — ticket triage, not refunds — run the agent where a human still approves, and let it earn its way up on evidence. No platform migration, no full ontology, no autonomy on day one. The first version is a single onboarded worker; the platform is what you get once you've onboarded a hundred.</p>
+  <p>Pick a job that is high-volume and observable (ticket triage, not refunds), run the agent where a human still approves, and let it earn its way up on evidence. No platform migration, no full ontology, no autonomy on day one. The first version is a single onboarded worker; the platform is what you get once you've onboarded a hundred.</p>
 </section>
 
 <section>
   <h2 id="one-slide-summary">One-slide summary</h2>
   <blockquote>
     <p><strong>Digital labor needs onboarding.</strong></p>
-    <p>Onboarding is three jobs: <strong>Ground</strong> (context + ontology — what matters, what things mean), <strong>Govern</strong> (the control plane — what agents can do), and <strong>Graduate</strong> (evaluation, graduation, accountability — how they're doing, when they're ready for more, who owns the outcome).</p>
-    <p><strong>Lattice is the enterprise control plane for digital labor</strong> — the operating layer that provides all three.</p>
+    <p>Onboarding is three jobs: <strong>Ground</strong> (context and ontology: what matters, what things mean), <strong>Govern</strong> (the control plane: what agents can do), and <strong>Graduate</strong> (evaluation, graduation, accountability: how they're doing, when they're ready for more, who owns the outcome).</p>
+    <p><strong>Lattice is the enterprise control plane for digital labor</strong>: the operating layer that provides all three.</p>
   </blockquote>
   <table class="tight">
     <thead>
@@ -889,7 +889,7 @@
   </a>
   <a class="post-nav-card next" href="https://tushar1344.github.io/concord-architecture/" target="_blank" rel="noopener">
     <div class="nav-label">Related →</div>
-    <div class="nav-title">Concord — contracts for governed work</div>
+    <div class="nav-title">Concord: contracts for governed work</div>
   </a>
 </div>
 
