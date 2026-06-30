@@ -894,6 +894,11 @@ Rules:
 
 Reply "Ready. Paste a ticket and its context." and wait.</code></pre>
   <p>That is Level 1: useful immediately, and safe because it only recommends. Notice what the prompt is doing by hand: supplying context, gating risky actions, naming an owner. That is the structure a real onboarding layer provides and enforces, once one agent works and you want a hundred.</p>
+  <div class="callout">
+    <div class="callout-label">Caution</div>
+    <p>This prompt advises; it does not enforce. It can flag that a credit needs approval, but nothing stops the model from acting anyway, and a tricked or careless run can ignore every rule. There is no logged trail, no enforced owner, and no real check on what comes in or goes out.</p>
+    <p>It is safe only because it drafts and never acts. The moment the agent can actually send the reply, issue the credit, or change the account, flags stop being enough: the gates have to be enforced outside the prompt, and every action recorded against an owner. That is the line between a prompt and an onboarding layer.</p>
+  </div>
 </section>
 
 <section>
