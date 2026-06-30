@@ -437,18 +437,19 @@
 
 <section>
   <h2 id="the-problem">The problem: enterprises are not agent-ready</h2>
-  <p>The blocker is not model capability. It is that the business an agent must understand is not written down in any one place.</p>
-  <p>Business context is scattered across:</p>
+  <p>The blocker is not model capability. It is that most of what an agent needs to know was never written down. The systems of record — CRM, ERP, ticketing, billing — hold only a fraction of it. The rest is <strong>dark context</strong>: the decisions, exceptions, and judgment that live where no system can see them.</p>
+  <p>Dark context lives in:</p>
   <ul>
-    <li>Systems of record (CRM, ERP, ticketing, billing)</li>
-    <li>Documents and wikis</li>
-    <li>Slack threads and DMs</li>
-    <li>Meetings that produced decisions but no artifact</li>
-    <li>Dashboards that imply state without explaining it</li>
-    <li>Workflows encoded in tools nobody fully owns</li>
-    <li>And, mostly, in people's heads</li>
+    <li>DMs and group chats</li>
+    <li>Personal and shared Google Drives</li>
+    <li>In-person meetings and hallway conversations</li>
+    <li>Phone calls</li>
+    <li>Offsites and whiteboards</li>
+    <li>All-hands announcements</li>
+    <li>And, most of all, in people's heads</li>
   </ul>
-  <p>A human assembles this picture over months; an agent has no such runway, and traditional access control does nothing to help. IAM answers <em>can this identity read this row?</em> It was never designed to answer the questions agents raise: <em>Should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em></p>
+  <p>The cruel part is that the most decision-relevant context is the least captured. The pricing exception agreed on a call, the "never auto-close this account" said at an offsite, the reorg announced at all-hands — none of it is in any database the agent can query. A human absorbs it by osmosis over months; an agent sees only the lit fraction and acts, confidently, as if that were the whole picture.</p>
+  <p>And traditional access control does nothing to help. IAM answers <em>can this identity read this row?</em> It was never designed to answer the questions agents raise: <em>Should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em></p>
   <p>The mismatch is structural. Access control is binary and static — a permission is granted or it is not, and it stays that way until someone changes it. Agent authority needs to be conditional and dynamic: allowed <em>here</em>, in <em>this</em> state, up to <em>this</em> threshold, and only while the agent's track record holds. The same refund might be fine on a routine account and require sign-off on a strategic one; the same agent might be trusted with it on Tuesday and pulled back after a bad week. None of that fits in an access-control list.</p>
   <p class="pull">Granting an agent database access is not onboarding. It's giving a new hire a master keycard and no manager.</p>
 </section>
@@ -529,6 +530,7 @@
   </ul>
   <p>Without this, an agent treats a "Sev-1 from your largest account" the same as a routine question, because both are just rows. Context is what makes those two rows different.</p>
   <p>Context is also what separates an agent that is technically correct from one that is <em>useful</em>. Raw access answers "what is the status of this account?" with the literal field value. Context answers the question behind it — <em>is this account at risk, why, and what should happen next?</em> The first is a lookup; the second is the work. Lattice treats context as a curated, versioned, per-role asset, not something the agent rebuilds from scratch on every task.</p>
+  <p>And the first job of the Understand layer is to <strong>capture dark context</strong> — to pull the decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands, and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
 </section>
 
 <section>
