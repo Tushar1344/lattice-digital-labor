@@ -373,9 +373,9 @@
 
     <p class="nav-label">Setup</p>
     <nav class="nav">
-      <a href="#the-bets">The bets</a>
       <a href="#the-core-problem">The core problem</a>
       <a href="#existing-systems">Existing systems</a>
+      <a href="#the-bets">The bets</a>
       <a href="#the-primitive-model">The primitive model</a>
     </nav>
 
@@ -425,19 +425,6 @@
 </div>
 
 <section>
-  <h2 id="the-bets">The bets</h2>
-  <p>Underneath all of it, Lattice starts from five bets about the agent era.</p>
-  <ol class="bets">
-    <li><strong>Models will keep getting more capable.</strong> They will read more, reason better, use more tools, and take on more categories of knowledge work.</li>
-    <li><strong>The bottleneck moves from intelligence to authority.</strong> The hard question stops being "can the model do this?" and becomes "<em>should</em> this agent be allowed to do this — on this object, in this state, for this customer, under these conditions?"</li>
-    <li><strong>Humans keep owning accountability.</strong> No enterprise will accept "the agent did it" as an operating model. Every agent action needs a human owner, a review path, and a business function that stands behind the outcome.</li>
-    <li><strong>Agents are under-contextualized by default.</strong> Humans become useful by absorbing context from meetings, Slack, docs, calls, exceptions, customer history, and organizational memory. Agents usually get a prompt, tool access, and a few database rows.</li>
-    <li><strong>Intelligence without context is risky or unproductive.</strong> A capable model with no business context produces answers that are technically correct and operationally wrong — optimizing the local task while missing the account history, legal risk, escalation path, exception policy, or human owner that changes what should happen.</li>
-  </ol>
-  <p>If those bets are right, the enterprise problem is not deploying agents. It is <strong>onboarding digital labor</strong>.</p>
-</section>
-
-<section>
   <h2 id="the-core-problem">The core problem: capability is arriving before onboarding</h2>
   <p>The enterprise agent stack is improving from the bottom up. Models are getting better. Tool use is getting easier. Agent frameworks are becoming more capable. Observability is improving. Workflows are easier to automate.</p>
   <p>But the onboarding layer is missing.</p>
@@ -462,6 +449,19 @@
   <p>Take IAM. It answers <em>can this identity read this row?</em> — never the question agents raise: <em>should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em> Access control is binary and static; agent authority has to be conditional and dynamic — allowed <em>here</em>, in <em>this</em> state, up to <em>this</em> threshold, and only while the agent's track record holds. None of that fits in an access-control list.</p>
   <p>Each of these systems is necessary. None is sufficient. <strong>Lattice connects them around the two things they individually ignore: what the business <em>means</em>, and who is <em>accountable</em>.</strong> It does not replace them — it sits above them and gives them a shared frame. It reads identity from IAM, executes through the agent frameworks and workflow engines already in place, and consumes the traces observability emits. What it adds is the binding none of them own: an agent to a role, a role to context and ontology, an ontology to policy, and policy to an accountable human — plus the evaluation loop that tightens or loosens that binding over time. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Lattice answers <em>what should happen next, and who stands behind it.</em></p>
   <p class="pull">Granting an agent database access is not onboarding. It's giving a new hire a master keycard and no manager.</p>
+</section>
+
+<section>
+  <h2 id="the-bets">The bets</h2>
+  <p>Underneath the architecture sits a worldview. Lattice starts from five bets about the agent era.</p>
+  <ol class="bets">
+    <li><strong>Models will keep getting more capable.</strong> They will read more, reason better, use more tools, and take on more categories of knowledge work.</li>
+    <li><strong>The bottleneck moves from intelligence to authority.</strong> The hard question stops being "can the model do this?" and becomes "<em>should</em> this agent be allowed to do this — on this object, in this state, for this customer, under these conditions?"</li>
+    <li><strong>Humans keep owning accountability.</strong> No enterprise will accept "the agent did it" as an operating model. Every agent action needs a human owner, a review path, and a business function that stands behind the outcome.</li>
+    <li><strong>Agents are under-contextualized by default.</strong> Humans become useful by absorbing context from meetings, Slack, docs, calls, exceptions, customer history, and organizational memory. Agents usually get a prompt, tool access, and a few database rows.</li>
+    <li><strong>Intelligence without context is risky or unproductive.</strong> A capable model with no business context produces answers that are technically correct and operationally wrong — optimizing the local task while missing the account history, legal risk, escalation path, exception policy, or human owner that changes what should happen.</li>
+  </ol>
+  <p>If those bets are right, capability is not the deliverable — onboarding is. The rest of this note is the architecture for it.</p>
 </section>
 
 <section>
@@ -742,9 +742,9 @@
       <p class="rail-label">On this page</p>
       <nav class="toc">
         <span class="toc-grp">Setup</span>
-        <a href="#the-bets">The bets</a>
         <a href="#the-core-problem">The core problem</a>
         <a href="#existing-systems">Existing systems</a>
+        <a href="#the-bets">The bets</a>
         <a href="#the-primitive-model">The primitive model</a>
         <span class="toc-grp">01 · Ground</span>
         <a href="#why-context-matters">Context</a>
