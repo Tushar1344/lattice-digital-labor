@@ -427,6 +427,7 @@
     <p class="nav-label">02 · Govern</p>
     <nav class="nav">
       <a href="#why-a-control-plane-matters">Control plane</a>
+      <a href="#human-in-the-loop">Human in the loop</a>
     </nav>
 
     <p class="nav-label">03 · Graduate</p>
@@ -595,7 +596,7 @@
 <div class="part">
   <span class="part-num">Part 02</span>
   <div class="part-title" id="part-govern">Govern</div>
-  <p class="part-gloss">Bound what the agent can do, and enforce it by construction rather than good intentions.</p>
+  <p class="part-gloss">Bound what the agent can do, decide when a human steps in, and enforce it by construction rather than good intentions.</p>
 </div>
 
 <section>
@@ -615,6 +616,24 @@
   <p>The control plane is where understanding meets authority. An agent may <em>understand</em> that a refund would resolve a ticket and still be barred from issuing one above a threshold without sign-off. That gap, between what an agent could do and what it is permitted to do, is the surface the control plane governs: the difference between an agent that reasons and an agent allowed to act on its reasoning.</p>
   <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through Lattice, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Nothing depends on the agent choosing to comply.</p>
   <p>And someone owns the result. In a human-only world, access really was enough, because people came with accountability built in. Give an employee the refund tool and they also bring the judgment to use it well and their name on the line when they don't. An agent brings the capability and none of the accountability, so Lattice attaches it. Every action has a named human owner who answers for the outcome, the way a manager answers for a report's work. No enterprise will accept "the agent did it," even when the agent acted on its own.</p>
+</section>
+
+<section>
+  <h2 id="human-in-the-loop">Where humans stay in the loop</h2>
+  <p>None of this removes people. Lattice draws the line between what an agent does on its own and what it hands to a human, so the two work as a team. Most real workflows are a mix of both, and the handoff is the part that has to be explicit.</p>
+  <p>There are three handoff points, and the control plane decides when each one fires:</p>
+  <table>
+    <thead>
+      <tr><th>Handoff</th><th>When it fires</th><th>What the human does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Approve</strong></td><td>the action needs sign-off, like a credit over a limit or a change to a sensitive account</td><td>clears or rejects it before it runs</td></tr>
+      <tr><td><strong>Escalate</strong></td><td>the agent is past its authority or out of its depth</td><td>takes the case</td></tr>
+      <tr><td><strong>Override</strong></td><td>any time, during or after the action</td><td>inspects the trail and reverses it</td></tr>
+    </tbody>
+  </table>
+  <p>The triage agent uses all three. It answers the routine ticket on its own, sends the large credit to the support lead to approve, escalates the top-tier Sev-1 to on-call, and leaves a trail the lead can override later.</p>
+  <p>The graduation level just sets the default. Level 1 hands almost everything to a person; Level 4 hands only the exceptions. Raising the level moves the handoff line. It never removes the human.</p>
 </section>
 
 <div class="part">
@@ -896,6 +915,7 @@
         <a href="#why-ontology-matters">Ontology</a>
         <span class="toc-grp">02 · Govern</span>
         <a href="#why-a-control-plane-matters">Control plane</a>
+        <a href="#human-in-the-loop">Human in the loop</a>
         <span class="toc-grp">03 · Graduate</span>
         <a href="#agent-graduation">Graduation ladder</a>
         <a href="#the-agent-scorecard">Scorecard</a>
