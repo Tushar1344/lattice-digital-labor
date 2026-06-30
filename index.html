@@ -462,15 +462,14 @@
 <div class="lead-in">
   <p>Model capabilities keep climbing. The productivity enterprises actually get from agents has not kept pace. Why?</p>
   <p>Because capability is no longer the bottleneck it used to be. Capable models are becoming common. What is scarce is the structure around them: the context to understand the business, the controls on what an agent is allowed to do, and the accountability for the result. That structure is the hard part, and it has to be built.</p>
-  <p>A prompt configures a model, and for most agents that is where onboarding stops. But onboarding a worker is everything around the model. When a human joins a team, they inherit a role, the context behind it, permissions, the policies that bound their judgment, a manager who reviews their work, and an accountable place in the org chart. An agent arrives with none of that. We hand it a prompt and an API key, then act surprised when it behaves like a contractor who started an hour ago and already has the keys to production. <strong>Digital labor cannot be onboarded with prompts alone.</strong></p>
+  <p>A prompt configures a model, and for most agents that is where onboarding stops. But onboarding a worker is everything around the model. When a human joins a team, they inherit a role, the context behind it, permissions, the policies that bound their judgment, a manager who reviews their work, and an accountable place in the org chart. An agent arrives with none of that. We hand it a prompt and an API key, then act surprised when it behaves like a contractor who started an hour ago and already has the keys to production.</p>
 </div>
 
 <section>
   <h2 id="the-core-problem">Capability is arriving before onboarding</h2>
-  <p>The enterprise agent stack is improving from the bottom up. Models are getting better. Tool use is getting easier. Agent frameworks are becoming more capable. Observability is improving. Workflows are easier to automate.</p>
+  <p>The enterprise agent stack is improving from the bottom up. Models are getting better.</p>
   <p>But the onboarding layer is missing.</p>
   <p>And it is missing right when it is needed most. Models have just crossed the line from <em>answering</em> to <em>acting</em>. A system that only answers can be wrong harmlessly: a human reads the output and decides what to do with it. An agent that acts is wrong <em>in production</em>. That moves the hard part from intelligence to authority, and it is happening now, not someday.</p>
-  <p>Enterprises have ways to give software access. They have ways to run workflows. They have ways to log what happened. What they do not yet have is a systematic way to answer: what does this agent need to know, what is it allowed to do, how much do we trust it, when should that trust increase, and who owns the result?</p>
   <p>That is the layer Lattice occupies. It is the control plane for digital labor: it gives agents business context, models the business through an ontology, governs what they can see and do, scores their performance, and graduates them into higher-trust work over time.</p>
 </section>
 
@@ -491,7 +490,7 @@
   </table>
   <p>Take IAM. It answers <em>can this identity read this row?</em> It never answers the question agents raise: <em>should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em> Access control is binary and static; agent authority has to be conditional and dynamic: allowed <em>here</em>, in <em>this</em> state, up to <em>this</em> threshold, and only while the agent's track record holds. None of that fits in an access-control list.</p>
   <p>Or take the harness. A meta-harness that runs Claude Code, Codex, or your own agents behind one interface gives you a lot: a uniform runner, a sandbox, cost caps, network limits. But those controls are about the session and the machine, not the business. The sandbox can stop an agent from reaching a secret. It cannot tell you that a refund on this account needs the owner's sign-off, or that this agent has earned the right to issue it. The harness runs the agent. It does not know what the work means or who answers for it.</p>
-  <p>Each of these systems is necessary. None is sufficient. Lattice connects them around the three things they individually ignore: what the business <em>means</em>, what an agent is <em>allowed</em> to do in a given situation, and who is <em>accountable</em> for the result. It does not replace them; it sits above them and gives them a shared frame. It reads identity from IAM, executes through the agent frameworks and workflow engines already in place, and consumes the traces observability emits. What it adds is the binding none of them own: an agent to a role, a role to context and ontology, an ontology to policy, and policy to an accountable human, plus the evaluation loop that tightens or loosens that binding over time. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Lattice answers <em>what should happen next, and who stands behind it.</em></p>
+  <p>Each of these systems is necessary. None is sufficient. Lattice connects them around the three things they individually ignore: what the business <em>means</em>, what an agent is <em>allowed</em> to do in a given situation, and who is <em>accountable</em> for the result. It does not replace them; it sits above them and gives them a shared frame. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Lattice answers <em>what should happen next, and who stands behind it.</em></p>
   <p>Concretely, that draws a clean line between what Lattice owns and what it composes with:</p>
   <table class="tight">
     <thead>
@@ -566,17 +565,8 @@
     <li><strong>Outputs and escalation rules</strong>: what a good result looks like, and when to hand off</li>
   </ul>
   <p>Without this, an agent treats a "Sev-1 from your largest account" the same as a routine question, because both are just rows. Context is what makes those two rows different.</p>
-  <p>Context is also what separates an agent that is technically correct from one that is <em>useful</em>. Raw access answers "what is the status of this account?" with the literal field value. Context answers the question behind it: <em>is this account at risk, why, and what should happen next?</em> The first is a lookup; the second is the work. Lattice treats context as a curated, versioned, per-role asset, not something the agent rebuilds from scratch on every task.</p>
-  <p>And most of what matters never reaches a system at all. Call it <strong>dark context</strong>: the decisions, exceptions, and judgment that live in:</p>
-  <ul>
-    <li>DMs and group chats</li>
-    <li>Personal and shared Google Drives</li>
-    <li>In-person meetings and hallway conversations</li>
-    <li>Phone calls</li>
-    <li>Offsites and whiteboards</li>
-    <li>All-hands announcements</li>
-    <li>And, most of all, in people's heads</li>
-  </ul>
+  <p>Lattice treats context as a curated, versioned, per-role asset, not something the agent rebuilds from scratch on every task.</p>
+  <p>And most of what matters never reaches a system at all. Call it <strong>dark context</strong>: the decisions, exceptions, and judgment that live in DMs, shared drives, meetings, calls, offsites, all-hands, and most of all in people's heads.</p>
   <p>The catch is that the most decision-relevant context is the least captured. The pricing exception agreed on a call, the "never auto-close this account" said at an offsite, the reorg announced at all-hands: none of it is in any database the agent can query. A human absorbs it by osmosis over months. An agent sees only the lit fraction and acts, confidently, as if that were the whole picture.</p>
   <p>So the first job of the Grounding layer is to <strong>capture dark context</strong>: to pull those decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
 </section>
@@ -616,7 +606,6 @@
     <li><strong>Who is accountable</strong> for each agent's behavior</li>
   </ul>
   <p>The key shift is from tool access to actions in context. Most security stops at the grant: does this agent have the refund tool, the database connection, the send-email scope? Access is the easy part. The same tool is safe in one context and damaging in another. A large refund is routine on a small billing error and a serious mistake on a strategic account mid-renewal. The tool did not change; the context did. So Lattice governs the action in context, not the grant: what the action is, which object it touches, what state that object is in, and who has to sign off before it runs.</p>
-  <p>The control plane is where understanding meets authority. An agent may <em>understand</em> that a refund would resolve a ticket and still be barred from issuing one above a threshold without sign-off. That gap, between what an agent could do and what it is permitted to do, is the surface the control plane governs: the difference between an agent that reasons and an agent allowed to act on its reasoning.</p>
   <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through Lattice, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Nothing depends on the agent choosing to comply.</p>
   <p>The chokepoint also sits on the way in and the way out, not only on the action. These are guardrails in the usual sense. On the way in, an agent can be tricked: a support email, a web page, or an uploaded file can carry hidden instructions that try to hijack it into issuing a refund or exporting a customer list. Lattice screens the input before the agent acts on it, so a planted instruction never becomes an action. On the way out, it screens what the agent is about to send, which matters most when the recipient is high-risk: a customer, an executive, an outside party. A reply that leaks another account's data, or a number that looks wrong, is held before it leaves.</p>
   <p>And someone owns the result. In a human-only world, access really was enough, because people came with accountability built in. Give an employee the refund tool and they also bring the judgment to use it well and their name on the line when they don't. An agent brings the capability and none of the accountability, so Lattice attaches it. Every action has a named human owner who answers for the outcome, the way a manager answers for a report's work. No enterprise will accept "the agent did it," even when the agent acted on its own.</p>
@@ -685,7 +674,7 @@
       <tr><td><strong>Stability</strong></td><td>Is its behavior consistent over time?</td></tr>
     </tbody>
   </table>
-  <p>An agent that confidently handles the easy 90% but cannot recognize the dangerous 10% is not ready, regardless of its accuracy score. The weighting also shifts with the level: at Level 1, task accuracy dominates, because the agent is only making suggestions. At Level 4 and above, escalation judgment, risk handling, and audit completeness dominate, because the failure that matters is no longer "wrong answer" but "wrong action, taken alone, that no one caught in time." The scorecard is not a single number; it is the evidence file the graduation gates read from, and the same file consulted when something goes wrong and someone asks how the agent was allowed to do that.</p>
+  <p>An agent that confidently handles the easy 90% but cannot recognize the dangerous 10% is not ready, regardless of its accuracy score. The scorecard is not a single number; it is the evidence file the graduation gates read from, and the same file consulted when something goes wrong and someone asks how the agent was allowed to do that.</p>
 </section>
 
 <section>
@@ -849,8 +838,8 @@
     showOutcome();
   })();
   </script>
-  <p>Nothing here required the agent to be told "ask before issuing large credits to big accounts." The ontology knew what a credit and a top-tier account were; the control plane knew which actions needed sign-off; the scorecard recorded how well the agent did. The agent reasoned; Lattice decided what that reasoning was allowed to do.</p>
-  <p>At Level 1, this same agent only <em>suggests</em> the category and the reply for a human to approve. The journey from Level 1 to Level 4 is exactly the graduation process: earned against the scorecard, gated by sign-off, and reversible if the evidence turns. What changes between levels is not the model, the prompt, or the agent's data access. It is the agent's <em>authority</em>: the set of actions it may take without a human. Onboarding is not a one-time switch from "off" to "on." It is a dial Lattice turns in either direction as the evidence accumulates.</p>
+  <p>Nothing here required the agent to be told "ask before issuing large credits to big accounts." The agent reasoned; Lattice decided what that reasoning was allowed to do.</p>
+  <p>At Level 1, this same agent only <em>suggests</em> the category and the reply for a human to approve. Onboarding is not a one-time switch from "off" to "on." It is a dial Lattice turns in either direction as the evidence accumulates.</p>
   <div class="callout">
     <div class="callout-label">Before / after</div>
     <p><strong>Before Lattice:</strong> the agent has a database login and a model. It answers fast, occasionally refunds a strategic account it shouldn't, and no one can reconstruct why.</p>
