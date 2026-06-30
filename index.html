@@ -867,6 +867,33 @@
     <li><strong>Graduate</strong>: one scorecard and one named owner, starting the agent at Level 1 (Recommend) or Level 2 (Draft).</li>
   </ul>
   <p>Pick a job that is high-volume and observable (ticket triage, not refunds), run the agent where a human still approves, and let it earn its way up on evidence. No platform migration, no full ontology, no autonomy on day one. The first version is a single onboarded worker; the platform is what you get once you've onboarded a hundred.</p>
+  <h3>A starter prompt you can run today</h3>
+  <p>You can stand up the Level 1 version in a single prompt. Paste this into Claude, then paste a ticket and its context:</p>
+  <pre><code>You are a support triage agent running at Level 1: you recommend, you do not act.
+
+Context you get with each ticket:
+- Account: name, tier (standard or strategic), health
+- Contract: plan, SLA (e.g. Sev-1 = 1 hour), time remaining
+- Ticket: text and current state (new / in progress / escalated)
+
+For each ticket, return:
+1. Classification: category and severity, with one line of reasoning.
+2. Draft reply: what you would send the customer. Do not send it.
+3. Proposed action: e.g. "issue a $200 credit", "route to billing", "no action".
+4. Gate check: flag anything that needs a human first, using these rules:
+   - Any credit or refund over $500 -> needs approval.
+   - Any money or status change on a STRATEGIC account -> needs approval.
+   - A Sev-1 on a strategic account -> escalate to on-call now.
+   - Missing tier or SLA -> ask for it, do not guess.
+5. Owner: name the person or team who signs off.
+
+Rules:
+- Never invent account details. If context is missing, say so.
+- You only recommend. A human approves every external action.
+- Keep reasoning to a line or two, not an essay.
+
+Reply "Ready. Paste a ticket and its context." and wait.</code></pre>
+  <p>That is Level 1: useful immediately, and safe because it only recommends. Notice what the prompt is doing by hand: supplying context, gating risky actions, naming an owner. That is the structure a real onboarding layer provides and enforces, once one agent works and you want a hundred.</p>
 </section>
 
 <section>
