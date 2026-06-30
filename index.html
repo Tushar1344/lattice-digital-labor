@@ -88,6 +88,9 @@
   /* Intro lead-in (before section 1) */
   .lead-in { margin: 0 0 8px; }
   .lead-in p { font-size: 16.5px; color: var(--ink-soft); }
+  ol.bets { margin: 20px 0 26px; padding-left: 24px; }
+  ol.bets > li { margin: 13px 0; padding-left: 4px; font-size: 16.5px; color: var(--ink-soft); }
+  ol.bets > li::marker { color: var(--coral); font-weight: 700; }
 
   /* Part dividers (Ground / Govern / Graduate) */
   .part {
@@ -370,10 +373,10 @@
 
     <p class="nav-label">Setup</p>
     <nav class="nav">
-      <a href="#what-changed">What changed</a>
-      <a href="#the-problem">The problem</a>
+      <a href="#the-bets">The bets</a>
+      <a href="#the-core-problem">The core problem</a>
+      <a href="#existing-systems">Existing systems</a>
       <a href="#the-primitive-model">The primitive model</a>
-      <a href="#what-lattice-is">What Lattice is</a>
     </nav>
 
     <p class="nav-label">01 · Ground</p>
@@ -407,50 +410,52 @@
 <header class="hero">
   <div class="eyebrow">Field note · Digital labor</div>
   <h1>Lattice: the control plane for digital labor</h1>
-  <p class="lede"><strong>Onboarding digital labor is the hardest challenge the enterprise faces in the agent era.</strong> Without a way to do it, every company is forced into a lose-lose choice: <strong>unleash</strong> agents and absorb the damage — brand harm, AI slop, work no one can trust — or <strong>hold them back</strong> and forfeit the productivity. Onboarding done right is the only way to get the upside without the blast radius.</p>
+  <p class="lede">Lattice starts from five bets about the agent era.</p>
   <div class="meta-strip">
     <span><strong>Read</strong> ~12 min</span>
     <span><strong>Topic</strong> Agent governance</span>
-    <span><strong>Updated</strong> Jun 29, 2026</span>
+    <span><strong>Updated</strong> Jun 30, 2026</span>
   </div>
 </header>
 
 <div class="lead-in">
-  <p>Why is it so hard? Because a prompt configures a model — it does not onboard a worker. When a human joins a team, they inherit far more than instructions: a role, the context behind it, a mental map of the business, permissions, tools, the policies that bound their judgment, a manager who reviews their work, and an accountable place in the org chart. Agents arrive with none of this. We hand them a prompt and an API key, then act surprised when they behave like contractors who started an hour ago and already have the keys to production. <strong>Digital labor cannot be onboarded with prompts alone.</strong></p>
-  <p><strong>Lattice is the enterprise control plane for digital labor.</strong> It gives agents business context, models the business through an ontology, governs what agents can see and do, scores their performance, and graduates them into higher-trust work over time.</p>
-  <p>This note explains the layer Lattice owns, the primitives it uses, and how an agent moves from <em>observing</em> to <em>acting autonomously</em> without the enterprise losing the thread of who is accountable.</p>
+  <ol class="bets" id="the-bets">
+    <li><strong>Models will keep getting more capable.</strong> They will read more, reason better, use more tools, and take on more categories of knowledge work.</li>
+    <li><strong>The bottleneck moves from intelligence to authority.</strong> The hard question stops being "can the model do this?" and becomes "<em>should</em> this agent be allowed to do this — on this object, in this state, for this customer, under these conditions?"</li>
+    <li><strong>Humans keep owning accountability.</strong> No enterprise will accept "the agent did it" as an operating model. Every agent action needs a human owner, a review path, and a business function that stands behind the outcome.</li>
+    <li><strong>Agents are under-contextualized by default.</strong> Humans become useful by absorbing context from meetings, Slack, docs, calls, exceptions, customer history, and organizational memory. Agents usually get a prompt, tool access, and a few database rows.</li>
+    <li><strong>Intelligence without context is risky or unproductive.</strong> A capable model with no business context produces answers that are technically correct and operationally wrong — optimizing the local task while missing the account history, legal risk, escalation path, exception policy, or human owner that changes what should happen.</li>
+  </ol>
+  <p>If those bets are right, the enterprise problem is not deploying agents. It is <strong>onboarding digital labor</strong>.</p>
+  <p>Lattice is the onboarding and control layer for digital labor. It gives agents the context humans normally absorb, models the business through an ontology, governs what agents can see and do, scores their performance, and graduates them into higher-trust work over time. A prompt configures a model; it does not onboard a worker.</p>
+  <p>When a human joins a team, they inherit far more than instructions: a role, the context behind it, a mental map of the business, permissions, tools, policies, a manager, and an accountable place in the org chart. Agents arrive with none of this unless the enterprise makes it explicit.</p>
+  <p>This note explains the layer Lattice owns, the primitives it uses, and how an agent moves from <em>observing</em> to <em>acting autonomously</em> without the enterprise losing track of authority or accountability.</p>
 </div>
 
 <section>
-  <h2 id="what-changed">What changed</h2>
-  <p>For decades, the unit of work was a human running a workflow. The software was passive; the person carried everything it could not encode.</p>
-  <p>A human did four things no system wrote down:</p>
-  <ul>
-    <li><strong>Carried context.</strong> Which customer was about to churn, and why the last ticket mattered.</li>
-    <li><strong>Exercised judgment.</strong> When "the policy says yes" still meant "ask first."</li>
-    <li><strong>Knew the escalation path.</strong> Whose desk a hard case landed on.</li>
-    <li><strong>Were accountable.</strong> A name was attached to the outcome.</li>
-  </ul>
-  <p>The shift now underway is from human-run workflows to <strong>human-agent workflows</strong>. Agents can read, reason, and act — but they only inherit what is made explicit. The context that lived in a person's head, the judgment encoded in years of "we don't do it that way," the escalation path that was tribal knowledge — all of it has to be written down, modeled, and enforced. Otherwise the agent operates with the confidence of a senior employee and the context of a stranger. Unlike a broken integration, it does not fail cleanly; it improvises, and the guess looks exactly like competence right up until it is wrong about something that mattered.</p>
-  <p>That gap — between what agents can do and what they actually understand — is the problem Lattice exists to close.</p>
+  <h2 id="the-core-problem">The core problem: capability is arriving before onboarding</h2>
+  <p>The enterprise agent stack is improving from the bottom up. Models are getting better. Tool use is getting easier. Agent frameworks are becoming more capable. Observability is improving. Workflows are easier to automate.</p>
+  <p>But the onboarding layer is missing.</p>
+  <p>Enterprises have ways to give software access. They have ways to run workflows. They have ways to log what happened. What they do not yet have is a systematic way to answer: what does this agent need to know, what is it allowed to do, how much do we trust it, when should that trust increase, and who owns the result?</p>
+  <p>That is the layer Lattice occupies.</p>
 </section>
 
 <section>
-  <h2 id="the-problem">The problem: enterprises are not agent-ready</h2>
-  <p>The blocker is not model capability. It is that most of what an agent needs to know was never written down. The systems of record — CRM, ERP, ticketing, billing — hold only a fraction of it. The rest is <strong>dark context</strong>: the decisions, exceptions, and judgment that live where no system can see them.</p>
-  <p>Dark context lives in:</p>
-  <ul>
-    <li>DMs and group chats</li>
-    <li>Personal and shared Google Drives</li>
-    <li>In-person meetings and hallway conversations</li>
-    <li>Phone calls</li>
-    <li>Offsites and whiteboards</li>
-    <li>All-hands announcements</li>
-    <li>And, most of all, in people's heads</li>
-  </ul>
-  <p>The cruel part is that the most decision-relevant context is the least captured. The pricing exception agreed on a call, the "never auto-close this account" said at an offsite, the reorg announced at all-hands — none of it is in any database the agent can query. A human absorbs it by osmosis over months; an agent sees only the lit fraction and acts, confidently, as if that were the whole picture.</p>
-  <p>And traditional access control does nothing to help. IAM answers <em>can this identity read this row?</em> It was never designed to answer the questions agents raise: <em>Should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em></p>
-  <p>The mismatch is structural. Access control is binary and static — a permission is granted or it is not, and it stays that way until someone changes it. Agent authority needs to be conditional and dynamic: allowed <em>here</em>, in <em>this</em> state, up to <em>this</em> threshold, and only while the agent's track record holds. The same refund might be fine on a routine account and require sign-off on a strategic one; the same agent might be trusted with it on Tuesday and pulled back after a bad week. None of that fits in an access-control list.</p>
+  <h2 id="existing-systems">Existing systems are necessary but insufficient</h2>
+  <p>IAM, workflow engines, observability, vector databases, agent frameworks — each solves part of the problem. Lattice is easiest to place by what it is <em>not</em>:</p>
+  <table>
+    <thead>
+      <tr><th>Lattice is not…</th><th>Because that only gives you…</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>an agent registry</td><td>a list of agents, not their authority or fitness</td></tr>
+      <tr><td>IAM</td><td>row-level access, not action-level judgment</td></tr>
+      <tr><td>workflow automation</td><td>execution, not meaning or accountability</td></tr>
+      <tr><td>observability</td><td>a record of what happened, not control over what happens next</td></tr>
+    </tbody>
+  </table>
+  <p>Take IAM. It answers <em>can this identity read this row?</em> — never the question agents raise: <em>should this agent take this action, on this object, in this state, given this policy, and who answers for it if it's wrong?</em> Access control is binary and static; agent authority has to be conditional and dynamic — allowed <em>here</em>, in <em>this</em> state, up to <em>this</em> threshold, and only while the agent's track record holds. None of that fits in an access-control list.</p>
+  <p>Each of these systems is necessary. None is sufficient. <strong>Lattice connects them around the two things they individually ignore: what the business <em>means</em>, and who is <em>accountable</em>.</strong> It does not replace them — it sits above them and gives them a shared frame. It reads identity from IAM, executes through the agent frameworks and workflow engines already in place, and consumes the traces observability emits. What it adds is the binding none of them own: an agent to a role, a role to context and ontology, an ontology to policy, and policy to an accountable human — plus the evaluation loop that tightens or loosens that binding over time. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Lattice answers <em>what should happen next, and who stands behind it.</em></p>
   <p class="pull">Granting an agent database access is not onboarding. It's giving a new hire a master keycard and no manager.</p>
 </section>
 
@@ -490,24 +495,6 @@
   <p>Ground and Govern make an agent <em>capable and safe on day one</em>; Graduate is what lets its authority grow past day one. The three are the through-line from here.</p>
 </section>
 
-<section>
-  <h2 id="what-lattice-is">What Lattice is</h2>
-  <p>Lattice is the onboarding and control layer for digital labor. It is easiest to define by what it is <em>not</em>:</p>
-  <table>
-    <thead>
-      <tr><th>Lattice is not…</th><th>Because that only gives you…</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>an agent registry</td><td>a list of agents, not their authority or fitness</td></tr>
-      <tr><td>IAM</td><td>row-level access, not action-level judgment</td></tr>
-      <tr><td>workflow automation</td><td>execution, not meaning or accountability</td></tr>
-      <tr><td>observability</td><td>a record of what happened, not control over what happens next</td></tr>
-    </tbody>
-  </table>
-  <p>Each of those is necessary. None is sufficient. <strong>Lattice connects all of them around two things they individually ignore: what the business <em>means</em>, and who is <em>accountable</em>.</strong> A registry plus IAM plus a workflow engine plus a dashboard still leaves the central question unanswered — is this agent ready to do this, and who owns it if it isn't?</p>
-  <p>Lattice does not replace these systems; it sits above them and gives them a shared frame. It reads identity from IAM, executes through the agent frameworks and workflow engines already in place, and consumes the traces observability emits. What it adds is the binding none of them own: an agent to a role, a role to context and ontology, an ontology to policy, and policy to an accountable human — plus the evaluation loop that tightens or loosens that binding over time. Everything below answers <em>what happened</em> or <em>what is technically allowed</em>; Lattice answers <em>what should happen next, and who stands behind it.</em></p>
-</section>
-
 <div class="part">
   <span class="part-num">Part 01</span>
   <div class="part-title" id="part-ground">Ground</div>
@@ -530,7 +517,18 @@
   </ul>
   <p>Without this, an agent treats a "Sev-1 from your largest account" the same as a routine question, because both are just rows. Context is what makes those two rows different.</p>
   <p>Context is also what separates an agent that is technically correct from one that is <em>useful</em>. Raw access answers "what is the status of this account?" with the literal field value. Context answers the question behind it — <em>is this account at risk, why, and what should happen next?</em> The first is a lookup; the second is the work. Lattice treats context as a curated, versioned, per-role asset, not something the agent rebuilds from scratch on every task.</p>
-  <p>And the first job of the Grounding layer is to <strong>capture dark context</strong> — to pull the decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands, and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
+  <p>And most of what matters never reaches a system at all. Call it <strong>dark context</strong> — the decisions, exceptions, and judgment that live in:</p>
+  <ul>
+    <li>DMs and group chats</li>
+    <li>Personal and shared Google Drives</li>
+    <li>In-person meetings and hallway conversations</li>
+    <li>Phone calls</li>
+    <li>Offsites and whiteboards</li>
+    <li>All-hands announcements</li>
+    <li>And, most of all, in people's heads</li>
+  </ul>
+  <p>The cruel part is that the most decision-relevant context is the least captured. The pricing exception agreed on a call, the "never auto-close this account" said at an offsite, the reorg announced at all-hands — none of it is in any database the agent can query. A human absorbs it by osmosis over months; an agent sees only the lit fraction and acts, confidently, as if that were the whole picture.</p>
+  <p>So the first job of the Grounding layer is to <strong>capture dark context</strong> — to pull those decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
 </section>
 
 <section>
@@ -717,11 +715,12 @@
       <tr><td>Accountability</td><td>Who owns the outcome</td></tr>
     </tbody>
   </table>
-  <p>Agents will keep getting more capable, which makes the onboarding layer more important, not less. Capability without context is a liability; capability inside Lattice is digital labor you can actually trust with the next, higher-stakes task — and the one after that.</p>
+  <p>Agents will keep getting more capable. That makes the onboarding layer more important, not less. As intelligence becomes abundant, authority becomes the scarce resource: who has it, what it applies to, how it is earned, when it is revoked, and who answers for the outcome.</p>
+  <p>Lattice is built for that world. It is the layer that turns capable agents into accountable digital labor.</p>
 </section>
 
 <div class="post-footer">
-  <a class="post-nav-card" href="#what-changed">
+  <a class="post-nav-card" href="#the-bets">
     <div class="nav-label">↑ Top</div>
     <div class="nav-title">Back to the start</div>
   </a>
@@ -738,10 +737,10 @@
       <p class="rail-label">On this page</p>
       <nav class="toc">
         <span class="toc-grp">Setup</span>
-        <a href="#what-changed">What changed</a>
-        <a href="#the-problem">The problem</a>
+        <a href="#the-bets">The bets</a>
+        <a href="#the-core-problem">The core problem</a>
+        <a href="#existing-systems">Existing systems</a>
         <a href="#the-primitive-model">The primitive model</a>
-        <a href="#what-lattice-is">What Lattice is</a>
         <span class="toc-grp">01 · Ground</span>
         <a href="#why-context-matters">Context</a>
         <a href="#why-ontology-matters">Ontology</a>
@@ -760,10 +759,10 @@
     <div class="rail-meta">
       <div><span class="k">Type</span><br>Architecture note</div>
       <div><span class="k">Topic</span><br>Agent governance</div>
-      <div><span class="k">Updated</span><br>Jun 29, 2026</div>
+      <div><span class="k">Updated</span><br>Jun 30, 2026</div>
       <div><span class="k">Read</span><br>~12 min</div>
     </div>
-    <a class="rail-back" href="#what-changed">↑ Back to top</a>
+    <a class="rail-back" href="#the-bets">↑ Back to top</a>
   </aside>
 </div>
 
