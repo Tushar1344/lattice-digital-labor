@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The gaps in onboarding digital labor</title>
-<meta name="description" content="Capable agents still fail at real enterprise work. The gap is not intelligence; it is onboarding: context, authority, and accountability. What it takes to close it.">
+<title>Onboarding Digital Labor: Challenges ahead</title>
+<meta name="description" content="Capable agents are arriving faster than the structure to run them. The challenges of onboarding digital labor: context, control, and accountability, and what changes as fleets scale, authoring spreads, and agents work together.">
 
 <link rel="icon" href="assets/brand/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32x32.png">
@@ -19,13 +19,13 @@
 <!-- open graph / twitter -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Field note">
-<meta property="og:title" content="The gaps in onboarding digital labor">
-<meta property="og:description" content="Capable agents still fail at real enterprise work. The gap is not intelligence; it is onboarding: context, authority, and accountability. What it takes to close it.">
+<meta property="og:title" content="Onboarding Digital Labor: Challenges ahead">
+<meta property="og:description" content="Capable agents are arriving faster than the structure to run them. The challenges of onboarding digital labor: context, control, and accountability, and what changes as fleets scale, authoring spreads, and agents work together.">
 <meta property="og:image" content="https://tushar1344.github.io/lattice-digital-labor/assets/brand/og-image.png">
 <meta property="og:url" content="https://tushar1344.github.io/lattice-digital-labor/gaps.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The gaps in onboarding digital labor">
-<meta name="twitter:description" content="Capable agents still fail at real enterprise work. The gap is not intelligence; it is onboarding: context, authority, and accountability. What it takes to close it.">
+<meta name="twitter:title" content="Onboarding Digital Labor: Challenges ahead">
+<meta name="twitter:description" content="Capable agents are arriving faster than the structure to run them. The challenges of onboarding digital labor: context, control, and accountability, and what changes as fleets scale, authoring spreads, and agents work together.">
 <meta name="twitter:image" content="https://tushar1344.github.io/lattice-digital-labor/assets/brand/og-image.png">
 
 <style>
@@ -450,7 +450,7 @@
 
 <header class="hero" id="top">
   <div class="eyebrow">Field note · Digital labor</div>
-  <h1>The gaps in onboarding digital labor</h1>
+  <h1>Onboarding Digital Labor: Challenges ahead</h1>
   <p class="lede">Onboarding digital labor is the hardest challenge the enterprise faces in the agent era. It leaves every company with three options. Move fast and break things: unleash agents and absorb the damage. Brand harm, AI slop, work no one can trust. Or move slow but safe: hold them back and forfeit the productivity. Most companies are stuck on these two. The fix is the third: onboard each agent like a worker, with the context to do the job, limits on what it can touch, and a named owner for the outcome.</p>
   <div class="meta-strip">
     <span><strong>Read</strong> ~20 min</span>
@@ -470,6 +470,7 @@
   <p>The enterprise agent stack is improving from the bottom up. Models are getting better. Tool use is getting easier. Agent frameworks are becoming more capable. Observability is improving. Workflows are easier to automate.</p>
   <p>But the onboarding layer is missing.</p>
   <p>And it is missing right when it is needed most. Models have just crossed the line from <em>answering</em> to <em>acting</em>. A system that only answers can be wrong harmlessly: a human reads the output and decides what to do with it. An agent that acts is wrong <em>in production</em>. That moves the hard part from intelligence to authority, and it is happening now, not someday.</p>
+  <p>And it is about to get harder. The number of agents per company will climb fast, and the ratio of humans to agents will flip: soon a few people will oversee a fleet, not the other way around. That breaks the habit of a human checking every action, and it strains accountability, because far more autonomous work happens per person. The structure has to carry that weight from day one, not once the fleet is already large.</p>
   <p>Enterprises have ways to give software access. They have ways to run workflows. They have ways to log what happened. What they do not yet have is a systematic way to answer: what does this agent need to know, what is it allowed to do, how much do we trust it, when should that trust increase, and who owns the result?</p>
   <p>That is the missing layer. Call it an onboarding and control layer for digital labor: it gives agents business context, models the business through an ontology, governs what they can see and do, scores their performance, and graduates them into higher-trust work over time.</p>
 </section>
@@ -541,7 +542,7 @@
       <tr><td><strong>Graduate</strong></td><td>Evaluation · Graduation · Accountability</td><td>measure it, then grant or pull back authority</td></tr>
     </tbody>
   </table>
-  <p>Ground and Govern make an agent useful and safe on day one. Graduate is what lets its authority grow after that. The next three sections take them one at a time.</p>
+  <p>Ground and Govern make an agent useful and safe on day one. Graduate is what lets its authority grow after that, and as fleets grow it does the hardest work of the three: earning and revoking trust is the only way supervision keeps up. The next three sections take them one at a time.</p>
 </section>
 
 <div class="part">
@@ -620,6 +621,8 @@
   <p>Crucially, the control plane is a chokepoint, not a guideline. An agent does not "try to follow" the rules: its actions pass through the layer, anything outside its granted authority does not execute, approvals hold until a human clears them, and logging happens at the point of action. Nothing depends on the agent choosing to comply.</p>
   <p>The chokepoint also sits on the way in and the way out, not only on the action. These are guardrails in the usual sense. On the way in, an agent can be tricked: a support email, a web page, or an uploaded file can carry hidden instructions that try to hijack it into issuing a refund or exporting a customer list. The layer screens the input before the agent acts on it, so a planted instruction never becomes an action. On the way out, it screens what the agent is about to send, which matters most when the recipient is high-risk: a customer, an executive, an outside party. A reply that leaks another account's data, or a number that looks wrong, is held before it leaves.</p>
   <p>And someone owns the result. In a human-only world, access really was enough, because people came with accountability built in. Give an employee the refund tool and they also bring the judgment to use it well and their name on the line when they don't. An agent brings the capability and none of the accountability, so the onboarding layer attaches it. Every action has a named human owner who answers for the outcome, the way a manager answers for a report's work. No enterprise will accept "the agent did it," even when the agent acted on its own.</p>
+  <p>This gets harder as authoring spreads. Anyone with a prompt or a low-code tool can build an agent now, and soon agents will build agents, well outside IT. The old control point, gatekeeping who may build and deploy, stops working. So the gate moves to the action, not the creation: anyone can author an agent, but nothing it does touches the business until it is onboarded and bound to a role, a policy, and an accountable human. Accountability has to terminate in a person. An agent can create another agent, but it cannot create accountability, so a created agent still passes through onboarding and inherits a human owner.</p>
+  <p>Workflows will also span many agents, kicked off by different people, some spawned by other agents. Two things break. Reliability: agent-to-agent handoffs need contracts, not hope, with a typed request, what is authorized, and a way to undo a step when a later one fails. That is what a per-action contract layer like <a href="https://tushar1344.github.io/concord-architecture/" target="_blank" rel="noopener">Concord</a> provides, carried across agents. Ownership: when a refund is the product of five agents' subtasks, accountability does not add up on its own. The workflow needs one named owner and one trail that ties every sub-action, agent, and human together. Delegation stays scoped: an agent handing off a subtask grants only what that subtask needs, never its full authority.</p>
 </section>
 
 <section>
@@ -664,6 +667,7 @@
     </tbody>
   </table>
   <p>The ladder is per-role, not per-agent. The same agent might sit at Level 4 for ticket triage and Level 1 for issuing credits. Trust is scoped to a domain, never granted globally.</p>
+  <p>This is what makes scale survivable. When one person oversees fifty agents, they cannot approve every action; supervision has to shift from reviewing everything to reviewing the exceptions. Graduation is what makes that safe, because an agent only skips the human on the actions it has earned. The same shift changes the operating model: onboard a role once and instantiate many agents from it, watch the fleet at the portfolio level where small per-agent error rates add up, and retire agents the way you offboard people, revoking access when they are done.</p>
 </section>
 
 <section>
