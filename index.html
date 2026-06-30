@@ -89,7 +89,7 @@
   .lead-in { margin: 0 0 8px; }
   .lead-in p { font-size: 16.5px; color: var(--ink-soft); }
 
-  /* Part dividers (Understand / Govern / Earn trust) */
+  /* Part dividers (Ground / Govern / Graduate) */
   .part {
     margin: 76px 0 8px; padding-top: 26px;
     border-top: 2px solid var(--ink);
@@ -376,7 +376,7 @@
       <a href="#what-lattice-is">What Lattice is</a>
     </nav>
 
-    <p class="nav-label">01 · Understand</p>
+    <p class="nav-label">01 · Ground</p>
     <nav class="nav">
       <a href="#why-context-matters">Context</a>
       <a href="#why-ontology-matters">Ontology</a>
@@ -387,7 +387,7 @@
       <a href="#why-a-control-plane-matters">Control plane</a>
     </nav>
 
-    <p class="nav-label">03 · Earn trust</p>
+    <p class="nav-label">03 · Graduate</p>
     <nav class="nav">
       <a href="#agent-graduation">Graduation ladder</a>
       <a href="#the-agent-scorecard">Scorecard</a>
@@ -482,12 +482,12 @@
       <tr><th>Job</th><th>Primitives</th><th>What it does</th></tr>
     </thead>
     <tbody>
-      <tr><td><strong>Understand</strong></td><td>Role · Context · Ontology</td><td>give the agent meaning</td></tr>
+      <tr><td><strong>Ground</strong></td><td>Role · Context · Ontology</td><td>give the agent meaning</td></tr>
       <tr><td><strong>Govern</strong></td><td>Permissions · Tools · Policy (the control plane)</td><td>bound what it can do</td></tr>
-      <tr><td><strong>Earn trust</strong></td><td>Evaluation · Graduation · Accountability</td><td>prove it over time</td></tr>
+      <tr><td><strong>Graduate</strong></td><td>Evaluation · Graduation · Accountability</td><td>measure it, then grant or pull back authority</td></tr>
     </tbody>
   </table>
-  <p>Understand and Govern make an agent <em>capable and safe on day one</em>; Earn trust is what lets its authority grow past day one. The three are the through-line from here.</p>
+  <p>Ground and Govern make an agent <em>capable and safe on day one</em>; Graduate is what lets its authority grow past day one. The three are the through-line from here.</p>
 </section>
 
 <section>
@@ -510,7 +510,7 @@
 
 <div class="part">
   <span class="part-num">Part 01</span>
-  <div class="part-title" id="part-understand">Understand</div>
+  <div class="part-title" id="part-ground">Ground</div>
   <p class="part-gloss">Give the agent meaning — what matters, and what the things it touches actually mean.</p>
 </div>
 
@@ -530,7 +530,7 @@
   </ul>
   <p>Without this, an agent treats a "Sev-1 from your largest account" the same as a routine question, because both are just rows. Context is what makes those two rows different.</p>
   <p>Context is also what separates an agent that is technically correct from one that is <em>useful</em>. Raw access answers "what is the status of this account?" with the literal field value. Context answers the question behind it — <em>is this account at risk, why, and what should happen next?</em> The first is a lookup; the second is the work. Lattice treats context as a curated, versioned, per-role asset, not something the agent rebuilds from scratch on every task.</p>
-  <p>And the first job of the Understand layer is to <strong>capture dark context</strong> — to pull the decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands, and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
+  <p>And the first job of the Grounding layer is to <strong>capture dark context</strong> — to pull the decisions and exceptions out of DMs, Drives, calls, offsites, and all-hands, and turn them into something an agent can actually consult. The lit fraction in the systems of record is the easy part; the work is surfacing the rest before an agent acts without it.</p>
 </section>
 
 <section>
@@ -573,8 +573,8 @@
 
 <div class="part">
   <span class="part-num">Part 03</span>
-  <div class="part-title" id="part-earn-trust">Earn trust</div>
-  <p class="part-gloss">Prove it over time — measure on business trust, graduate against thresholds, and stay reversible.</p>
+  <div class="part-title" id="part-graduate">Graduate</div>
+  <p class="part-gloss">Measure it on business trust, graduate it against explicit thresholds, and stay ready to pull it back.</p>
 </div>
 
 <section>
@@ -650,7 +650,7 @@
 <div class="part">
   <span class="part-num">In practice</span>
   <div class="part-title" id="part-in-practice">The three together</div>
-  <p class="part-gloss">Understand, Govern, and Earn trust are not stages you finish — they run at once, on every action.</p>
+  <p class="part-gloss">Ground, Govern, and Graduate are not stages you finish — they run at once, on every action.</p>
 </div>
 
 <section>
@@ -701,7 +701,7 @@
   <h2 id="one-slide-summary">One-slide summary</h2>
   <blockquote>
     <p><strong>Digital labor needs onboarding.</strong></p>
-    <p>Onboarding is three jobs: <strong>Understand</strong> (context + ontology — what matters, what things mean), <strong>Govern</strong> (the control plane — what agents can do), and <strong>Earn trust</strong> (evaluation, graduation, accountability — how they're doing, when they're ready for more, who owns the outcome).</p>
+    <p>Onboarding is three jobs: <strong>Ground</strong> (context + ontology — what matters, what things mean), <strong>Govern</strong> (the control plane — what agents can do), and <strong>Graduate</strong> (evaluation, graduation, accountability — how they're doing, when they're ready for more, who owns the outcome).</p>
     <p><strong>Lattice is the enterprise control plane for digital labor</strong> — the operating layer that provides all three.</p>
   </blockquote>
   <table class="tight">
@@ -709,10 +709,10 @@
       <tr><th>Job</th><th>Layer</th><th>What it provides</th></tr>
     </thead>
     <tbody>
-      <tr><td rowspan="2"><strong>Understand</strong></td><td>Context</td><td>What matters</td></tr>
+      <tr><td rowspan="2"><strong>Ground</strong></td><td>Context</td><td>What matters</td></tr>
       <tr><td>Ontology</td><td>What things mean</td></tr>
       <tr><td><strong>Govern</strong></td><td>Control plane</td><td>What agents can do</td></tr>
-      <tr><td rowspan="3"><strong>Earn trust</strong></td><td>Scorecard</td><td>How well they're doing</td></tr>
+      <tr><td rowspan="3"><strong>Graduate</strong></td><td>Scorecard</td><td>How well they're doing</td></tr>
       <tr><td>Graduation</td><td>When they're ready for more</td></tr>
       <tr><td>Accountability</td><td>Who owns the outcome</td></tr>
     </tbody>
@@ -742,12 +742,12 @@
         <a href="#the-problem">The problem</a>
         <a href="#the-primitive-model">The primitive model</a>
         <a href="#what-lattice-is">What Lattice is</a>
-        <span class="toc-grp">01 · Understand</span>
+        <span class="toc-grp">01 · Ground</span>
         <a href="#why-context-matters">Context</a>
         <a href="#why-ontology-matters">Ontology</a>
         <span class="toc-grp">02 · Govern</span>
         <a href="#why-a-control-plane-matters">Control plane</a>
-        <span class="toc-grp">03 · Earn trust</span>
+        <span class="toc-grp">03 · Graduate</span>
         <a href="#agent-graduation">Graduation ladder</a>
         <a href="#the-agent-scorecard">Scorecard</a>
         <a href="#graduation-gates">Graduation gates</a>
